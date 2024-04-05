@@ -15,7 +15,8 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        var productData = _repo.Products;
+        return View(productData);
     }
 
 }

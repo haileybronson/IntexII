@@ -135,3 +135,4 @@
 /Users/haileybronson/RiderProjects/IntexII/obj/Debug/net8.0/IntexII.pdb
 /Users/haileybronson/RiderProjects/IntexII/obj/Debug/net8.0/IntexII.genruntimeconfig.cache
 /Users/haileybronson/RiderProjects/IntexII/obj/Debug/net8.0/ref/IntexII.dll
+/Users/haileybronson/RiderProjects/IntexII/obj/Debug/net8.0/IntexII.sourcelink.json
