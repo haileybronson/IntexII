@@ -8,7 +8,7 @@ public partial class Product
 
     public string Category { get; set; } = null!;
 
-    public int PageCount { get; set; }
+    //public int PageCount { get; set; }
 
     public double Price { get; set; }
 }
