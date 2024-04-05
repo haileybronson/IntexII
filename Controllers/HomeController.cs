@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using IntexII.Models;
+using IntexII.Models.ViewModels;
 
 namespace IntexII.Controllers;
 
@@ -13,10 +14,27 @@ public class HomeController : Controller
         _repo = temp;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(int pageNum, string? productType)
     {
-        var productData = _repo.Products;
-        return View(productData);
+        int pageSize = 10;
+
+        var blah = new ProductsListViewModel()
+        {
+            Products = _repo.Products
+                .Where(x=> x.ProductName == productType || productType == null)
+                .OrderBy(x=> x.ProductName)
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize),
+
+            PaginationInfo = new PaginationInfo
+            {
+                CurrentPage = pageNum, 
+                TotalItems = productType == null ? _repo.Products.Count() : _repo.Products.Where(x => x.ProductName == productType).Count()
+            },
+            CurrentProductType = productType
+        };
+            
+        return View(blah);
     }
 
 }

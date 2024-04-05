@@ -2,11 +2,11 @@
     ViewData["Title"] = "Home Page";
 }
 
-@model IEnumerable<Product>
+@model ProductsListViewModel
 
 <h1>The Bookstore</h1>
 
-@foreach (Product b in Model)
+@foreach (Product b in Model.Products)
 {
     <div class="card m-1 p-1">
         <h4>@b.ProductName
@@ -19,3 +19,7 @@
         </ul>
     </div>
 }
+
+<div page-model="@Model.PaginationInfo" page-action="Index" page-classes-enabled="true" page-class="btn" 
+     page-class-normal="btn-outline-dark" page-class-selected="btn-primary" 
+     page-url-bookType="@Model.CurrentProductType" class="btn-group pull-right m-1"></div>
