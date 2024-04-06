@@ -29,6 +29,7 @@ public class HomeController : Controller
             PaginationInfo = new PaginationInfo
             {
                 CurrentPage = pageNum, 
+                ItemsPerPage = pageSize, 
                 TotalItems = productType == null ? _repo.Products.Count() : _repo.Products.Where(x => x.ProductName == productType).Count()
             },
             CurrentProductType = productType
