@@ -24,6 +24,10 @@ builder.Services.AddScoped<IProductRepository, EFProductRepository>();
 
 builder.Services.AddRazorPages();
 
+//adding the ability for sessions
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -40,6 +44,9 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+//actually using the session ability 
+app.UseSession();
 
 app.UseRouting();
 
