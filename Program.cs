@@ -22,6 +22,8 @@ builder.Services.AddDbContext<ProductDBContext>(options =>
 
 builder.Services.AddScoped<IProductRepository, EFProductRepository>();
 
+builder.Services.AddRazorPages();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -45,8 +47,9 @@ app.UseAuthorization();
 
 //order matters, it will take the first one without looking at the second
 app.MapControllerRoute("pagenumandtype", "{productType}/{pageNum}", new { Controller = "Home", action = "Index" });
-app.MapControllerRoute("productType", "{productType}", new { Controller = "Home", action = "Index", pageNum = 1 });
 app.MapControllerRoute("pagination", "{pageNum}", new {Controller = "Home", action ="Index", pageNum = 1});
+app.MapControllerRoute("productType", "{productType}", new { Controller = "Home", action = "Index", pageNum = 1 });
+
 app.MapDefaultControllerRoute();
 
 app.MapRazorPages();
