@@ -4870,24 +4870,26 @@
     ]
   },
   "packageFolders": {
-    "/Users/haileybronson/.nuget/packages/": {}
+    "C:\\Users\\btsto\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/haileybronson/RiderProjects/IntexII/IntexII.csproj",
+      "projectUniqueName": "C:\\Users\\btsto\\Downloads\\IntexII\\IntexII\\IntexII.csproj",
       "projectName": "IntexII",
-      "projectPath": "/Users/haileybronson/RiderProjects/IntexII/IntexII.csproj",
-      "packagesPath": "/Users/haileybronson/.nuget/packages/",
-      "outputPath": "/Users/haileybronson/RiderProjects/IntexII/obj/",
+      "projectPath": "C:\\Users\\btsto\\Downloads\\IntexII\\IntexII\\IntexII.csproj",
+      "packagesPath": "C:\\Users\\btsto\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\btsto\\Downloads\\IntexII\\IntexII\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/haileybronson/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\btsto\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4962,7 +4964,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
