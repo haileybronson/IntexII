@@ -136,7 +136,6 @@
 /Users/haileybronson/RiderProjects/IntexII/obj/Debug/net8.0/IntexII.genruntimeconfig.cache
 /Users/haileybronson/RiderProjects/IntexII/obj/Debug/net8.0/ref/IntexII.dll
 /Users/haileybronson/RiderProjects/IntexII/obj/Debug/net8.0/IntexII.sourcelink.json
-/Users/haileybronson/RiderProjects/IntexII/bin/Debug/net8.0/ProductDB.sqlite
 /Users/haileybronson/RiderProjects/IntexII/bin/Debug/net8.0/Azure.Core.dll
 /Users/haileybronson/RiderProjects/IntexII/bin/Debug/net8.0/Azure.Identity.dll
 /Users/haileybronson/RiderProjects/IntexII/bin/Debug/net8.0/Microsoft.Data.SqlClient.dll
