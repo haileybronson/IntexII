@@ -58,9 +58,13 @@ app.UseRouting();
 app.UseAuthorization();
 
 //order matters, it will take the first one without looking at the second
-app.MapControllerRoute("pagenumandtype", "{productType}/{pageNum}", new { Controller = "Home", action = "Index" });
-app.MapControllerRoute("pagination", "{pageNum}", new {Controller = "Home", action ="Index", pageNum = 1});
-app.MapControllerRoute("productType", "{productType}", new { Controller = "Home", action = "Index", pageNum = 1 });
+//app.MapControllerRoute("pagenumandtype", "{productType}/{pageNum}", new { Controller = "Home", action = "Index" });
+//app.MapControllerRoute("pagination", "{pageNum}", new {Controller = "Home", action ="Index", pageNum = 1});
+//app.MapControllerRoute("productType", "{productType}", new { Controller = "Home", action = "Index", pageNum = 1 });
+app.MapControllerRoute("pagenumandtype", "{productType}/Page{pageNum}", new { Controller = "Home", Action = "Index" });
+app.MapControllerRoute("page", "Page/{pageNum}", new { Controller = "Home", Action = "Index", pageNum = 1 });
+app.MapControllerRoute("productType", "{productType}", new { Controller = "Home", Action = "Index", pageNum = 1 });
+app.MapControllerRoute("pagination", "Products/Page{pageNum}", new { Controller = "Home", Action = "Index", pageNum = 1 });
 
 app.MapDefaultControllerRoute();
 
