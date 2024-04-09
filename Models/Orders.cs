@@ -3,7 +3,8 @@
 public partial class Orders
 {
     public int transaction_Id { get; set; }
-    public int customer_Id { get; set; } = null!;
+    
+    public int customer_Id { get; set; }
 
     public string date { get; set; }
 

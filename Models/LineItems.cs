@@ -3,7 +3,8 @@
 public partial class LineItems
 {
     public int transaction_Id { get; set; }
-    public int ProductId { get; set; } = null!;
+    
+    public int ProductId { get; set; }
 
     public int qty { get; set; }
 
