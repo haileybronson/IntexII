@@ -1,0 +1,17 @@
+.vs/
+.vscode/
+.idea/
+NexusProject/obj/
+NexusProject/bin/
+./obj/
+./bin/
+bin/
+obj/
+*/obj/
+*/bin/
+./obj
+./bin
+bin
+obj
+*/obj
+*/bin
