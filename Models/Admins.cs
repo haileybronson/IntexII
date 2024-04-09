@@ -7,7 +7,7 @@ public partial class Admins
 
     public string last_Name { get; set; }
 
-    public string birth_date { get; set; }
+    public string birth_Date { get; set; }
     public string country_of_Residence { get; set; }
 
     public string gender { get; set; }

@@ -2,7 +2,7 @@
 
 public partial class Users
 {
-    public int user_ID { get; set; }
+    public int user_Id { get; set; }
     public int customer_Id { get; set; } = null!;
 
     public int admin_Id { get; set; }
