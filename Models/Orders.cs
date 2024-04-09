@@ -1,7 +1,10 @@
-﻿namespace IntexII.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace IntexII.Models;
 
 public partial class Orders
 {
+    [Key]
     public int transaction_Id { get; set; }
     
     public int customer_Id { get; set; }
