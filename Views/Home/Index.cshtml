@@ -1,16 +1,18 @@
-﻿@{
+@{
     ViewData["Title"] = "Home Page";
 }
 
-@model ProductsListViewModel
-
-    <h1>The Store</h1>
-
-    @foreach (Product b in Model.Products)
-    {
-        <partial name="ProductSummary" model="b"/>
-    }
-
-    <div page-model="@Model.PaginationInfo" page-action="Index" page-classes-enabled="true" page-class="btn" 
-         page-class-normal="btn-outline-dark" page-class-selected="btn-primary" 
-         page-url-productType="@Model.CurrentProductType" class="btn-group pull-right m-1"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+<div class="container">
+    <h1>Welcome to IntexII</h1>
+    <p><strong>This is what we need to do/have - A professional looking landing page that introduces the site</strong></p>
+</div>
+</body>
+</html>

@@ -14,8 +14,36 @@ public class HomeController : Controller
         _repo = temp;
     }
 
-    //public IActionResult Index(int pageNum, string? productType)
-    public ViewResult Index(string? productType, int pageNum =1)
+    public IActionResult Index()
+    {
+        return View();
+    }
+    
+    public IActionResult Privacy()
+    {
+        return View();
+    }
+    
+    public IActionResult AboutUs()
+    {
+        return View();
+    }
+    
+    public IActionResult CrudProducts()
+    {
+        return View();
+    }
+    
+    public IActionResult CrudUsers()
+    {
+        return View();
+    }
+    
+    public IActionResult ReviewOrders()
+    {
+        return View();
+    }
+    public ViewResult Products(string? productType, int pageNum =1)
     {
         int pageSize = 10;
 
