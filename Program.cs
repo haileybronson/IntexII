@@ -4,6 +4,14 @@ using IntexII.Data;
 using IntexII.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+var services = builder.Services;
+var configuration = builder.Configuration;
+
+services.AddAuthentication().AddGoogle(googleOptions =>
+{
+    googleOptions.ClientId = configuration["Authentication_Google_ClientId"];
+    googleOptions.ClientSecret = configuration["Authentication_Google_ClientSecret"];
+});
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("ProductConnection") ?? throw new InvalidOperationException("Connection string 'ProductConnection' not found.");
