@@ -1,7 +1,10 @@
-﻿namespace IntexII.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace IntexII.Models;
 
 public partial class Admins
 {
+    [Key]
     public int admin_Id { get; set; }
     
     public string first_Name { get; set; } = null!;
