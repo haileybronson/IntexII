@@ -16,5 +16,5 @@ obj
 */obj
 */bin
 *.dll
-*bin
-*debug
+#*bin
+#*debug
