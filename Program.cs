@@ -15,13 +15,52 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
-//Data 
+
+
+//DB Contexts and Repo Pattern 
 builder.Services.AddDbContext<ProductDBContext>(options =>
 {
     options.UseSqlServer(builder.Configuration["ConnectionStrings:ProductConnection"]);
 });
 
 builder.Services.AddScoped<IProductRepository, EFProductRepository>();
+
+//usersDBContext
+builder.Services.AddDbContext<UsersDBContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration["ConnectionStrings:ProductConnection"]);
+});
+//add repo pattern
+
+//ordersDBcontext
+builder.Services.AddDbContext<OrdersDBContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration["ConnectionStrings:ProductConnection"]);
+});
+//add orders repopattern
+
+//LineItemsDBContext
+builder.Services.AddDbContext<LineItemsDBContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration["ConnectionStrings:ProductConnection"]);
+});
+
+//add lineitems repo pattern
+
+//customersDBContext
+builder.Services.AddDbContext<CustomersDBContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration["ConnectionStrings:ProductConnection"]);
+});
+//add customers repo pattern
+
+//Admins DB Context
+builder.Services.AddDbContext<AdminsDBContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration["ConnectionStrings:ProductConnection"]);
+});
+//add admins repo pattern
+
 
 builder.Services.AddRazorPages();
 
