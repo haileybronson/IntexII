@@ -102,6 +102,7 @@ app.UseSession();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 //order matters, it will take the first one without looking at the second
