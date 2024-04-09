@@ -17,7 +17,7 @@ public class HomeController : Controller
     //public IActionResult Index(int pageNum, string? productType)
     public ViewResult Index(string? productType, int pageNum =1)
     {
-        int pageSize = 2;
+        int pageSize = 10;
 
         var blah = new ProductsListViewModel()
         {
