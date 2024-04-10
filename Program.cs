@@ -82,6 +82,14 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 var app = builder.Build();
 
+//Content-Security-Policy header
+app.Use(async (ctx, next) =>
+{
+    ctx.Response.Headers.Add("Content-Security-Policy",
+        "default-src 'self'");
+    await next();
+});
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
