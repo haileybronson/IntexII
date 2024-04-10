@@ -30,23 +30,6 @@ public class HomeController : Controller
         return View();
     }
     
-    [Authorize]
-    public IActionResult CrudProducts()
-    {
-        return View();
-    }
-    
-    [Authorize]
-    public IActionResult CrudUsers()
-    {
-        return View();
-    }
-    
-    [Authorize]
-    public IActionResult ReviewOrders()
-    {
-        return View();
-    }
     public ViewResult Products(string? productType, int pageNum =1)
     {
         int pageSize = 10;
