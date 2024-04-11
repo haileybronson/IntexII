@@ -1,9 +1,8 @@
-<!-- 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Edit Users</title>
-    <style>
+   <title>Edit Customers</title>
+   <style>
        /* Centering the table horizontally */
        .table-container {
            margin-bottom: 20px; /* Add margin-bottom to create a gap */
@@ -52,57 +51,39 @@
    </style>
 </head>
 <body>
-<h4><strong>This will be the CRUD Page for ADMINS ONLY that will be able to edit Users</strong></h4>
-<a class="btn-add" @*href="@Url.Action("AddUsers", "Brian1")">Add Users</a>*@
+   <h4><strong>This will be the CRUD Page for ADMINS ONLY that will be able to edit Customers</strong></h4>
+   <a class="btn-add" href="@Url.Action("AddCustomers", "Brian1")">Add Customers</a>
 
-<div class="table-container">
-<table>
-<thead>
-<tr>
-    <th>User ID</th>
-    <th>User Name</th>
-    <th>Normalized User Name</th>
-    <th>Email</th>
-    <th>Normalized Email</th>
-    <th>Email Confirmed</th>
-    <th>Password Hash</th>
-    <th>Security Stamp</th>
-    <th>Concurrency Stamp</th>
-    <th>Phone Number</th>
-    <th>Phone Number Confirmed</th>
-    <th>Two Factor Enabled</th>
-    <th>Lockout End</th>
-    <th>Lockout Enabled</th>
-    <th>Access Failed Count</th>
-    <th>Actions</th> New column for buttons 
-</tr>
-</thead>
--->
-@*
+   <div class="table-container">
+       <table>
+           <thead>
+           <tr>
+               <th>Customer ID</th>
+               <th>First Name</th>
+               <th>Last Name</th>
+               <th>Birth Date</th>
+               <th>Country of Residence</th>
+               <th>Gender</th>
+               <th>Age</th>
+               <th>Actions</th> <!-- New column for buttons -->
+           </tr>
+           </thead>
            <tbody>
-           @foreach (var user in Model ?? Enumerable.Empty<AspNetUsers>())
+           @foreach (var customer in Model ?? Enumerable.Empty<Customers>())
            {
            <tr>
-               <td>@(user.Id ?? "N/A")</td>
-               <td>@(user.UserName ?? "N/A")</td>
-               <td>@(user.NormalizedUserName ?? "N/A")</td>
-               <td>@(user.Email ?? "N/A")</td>
-               <td>@(user.NormalizedEmail ?? "N/A")</td>
-               <td>@(user.EmailConfirmed ?? "N/A")</td>
-               <td>@(user.PasswordHash ?? "N/A")</td>
-               <td>@(user.SecurityStamp ?? "N/A")</td>
-               <td>@(user.ConcurrencyStamp ?? "N/A")</td>
-               <td>@(user.PhoneNumber ?? "N/A")</td>
-               <td>@(user.PhoneNumberConfirmed ?? "N/A")</td>
-               <td>@(user.TwoFactorEnabled ?? "N/A")</td>
-               <td>@(user.LockoutEnd ?? "N/A")</td>
-               <td>@(user.LockoutEnabled ?? "N/A")</td>
-               <td>@(user.AccessFailedCount ?? "N/A")</td>
+               <td>@(customer.customer_ID)</td>
+               <td>@(customer.first_Name)</td>
+               <td>@(customer.last_Name)</td>
+               <td>@(customer.birth_date)</td>
+               <td>@(customer.country_of_Residence)</td>
+               <td>@(customer.gender)</td>
+               <td>@(customer.age)</td>
                <td>
                    <!-- Delete button with confirmation dialog -->
-                   <button type="button" class="btn-delete" onclick="confirmDelete('@user.UserName', @user.Id)">Delete</button>
-                   <!-- Link to route to UpdateProduct action with product ID -->
-                   <a class="btn-edit" href="@Url.Action("UpdateUsers", "Brian1", new { id = user.Id })">Edit</a>
+                   <button type="button" class="btn-delete" onclick="confirmDelete('@customer.first_Name', '@customer.customer_ID')">Delete</button>
+                   <!-- Link to route to UpdateCustomers action with customer ID -->
+                   <a class="btn-edit" href="@Url.Action("UpdateCustomers", "Brian1", new { id = customer.customer_ID })">Edit</a>
                </td>
            </tr>
            }
@@ -113,19 +94,19 @@
 
    <!-- JavaScript to handle the confirmation dialog -->
    <script>
-       function confirmDelete(UserName, Id) {
+       function confirmDelete(customerName, id) {
            // Show a confirmation dialog
-           if (confirm("Are you sure you want to delete " + UserName + "?")) {
+           if (confirm("Are you sure you want to delete " + customerName + "?")) {
                // If user confirms, submit the form
                var form = document.createElement("form");
                form.method = "post";
-               form.action = "@Url.Action("DeleteUsers", "Brian1")";
+               form.action = "@Url.Action("DeleteCustomers", "Brian1")";
               
-               // Create a hidden input field to pass the product ID
+               // Create a hidden input field to pass the customer ID
                var hiddenInput = document.createElement("input");
                hiddenInput.type = "hidden";
                hiddenInput.name = "id";
-               hiddenInput.value = Id;
+               hiddenInput.value = id;
               
                // Append the hidden input field to the form
                form.appendChild(hiddenInput);
@@ -141,6 +122,3 @@
    </script>
 </body>
 </html>
-
-
-*@
