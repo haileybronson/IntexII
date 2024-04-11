@@ -10,5 +10,14 @@ public partial class AdminsDBContext : DbContext
     }
 
     public virtual DbSet<Admins> Admins { get; set; }
+    
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer("ProductConnection");
+            // Replace "YourProductConnectionConnectionString" with your actual connection string
+        }
+    }
 }
 

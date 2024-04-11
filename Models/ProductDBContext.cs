@@ -8,8 +8,15 @@ public partial class ProductDBContext : DbContext
         : base(options)
     {
     }
+    
     public virtual DbSet<Product> Products { get; set; }
     
-    public virtual DbSet<Orders> Orders { get; set; }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer("ProductConnection");
+            // Replace "YourProductConnectionConnectionString" with your actual connection string
+        }
+    }
 }
-
