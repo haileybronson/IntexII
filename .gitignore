@@ -18,3 +18,4 @@ obj
 *.dll
 #*bin
 #*debug
+**/appsettings.Development.json

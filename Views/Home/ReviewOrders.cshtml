@@ -4,7 +4,7 @@
     Layout = null;
 }
 
-@model IEnumerable<IntexII.Models.OrderFraudPrediction>
+@model OrdersListViewModel
 
 @{
     ViewData["Title"] = "Fraud_Predictions";
@@ -35,47 +35,58 @@
 
 </style>
     <h2>Fraud Predictions</h2>
-    <table class="table">
-        <thead>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Transaction ID</th>
+        <th>Customer ID</th>
+        <th>Date</th>
+        <th>Day of Week</th>
+        <th>Time</th>
+        <th>Entry Mode</th>
+        <th>Amount</th>
+        <th>Type of Transaction</th>
+        <th>Country of Transaction</th>
+        <th>Shipping Address</th>
+        <th>Bank</th>
+        <th>Type of Card</th>
+        <th>Fraud</th>
+        <th class="prediction-cell">Prediction</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Predictions)
+    {
+        if (item.Prediction == "Fraud")
+        {
             <tr>
-                <th>Transaction ID</th>
-                <th>Customer ID</th>
-                <th>Date</th>
-                <th>Day of Week</th>
-                <th>Time</th>
-                <th>Entry Mode</th>
-                <th>Amount</th>
-                <th>Type of Transaction</th>
-                <th>Country of Transaction</th>
-                <th>Shipping Address</th>
-                <th>Bank</th>
-                <th>Type of Card</th>
-                <th>Fraud</th>
-                <th class="prediction-cell">Prediction</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                if (item.Prediction == "Fraud")
-                {
-                   <tr>
-                     <td>@item.Orders.transaction_Id</td>
-                     <td>@item.Orders.customer_Id</td>
-                     <td>@item.Orders.date</td>
-                     <td>@item.Orders.day_of_week</td>
-                     <td>@item.Orders.time</td>
-                     <td>@item.Orders.entry_mode</td>
-                     <td>@item.Orders.amount</td>
-                     <td>@item.Orders.type_of_transaction</td>
-                     <td>@item.Orders.country_of_transaction</td>
-                     <td>@item.Orders.shipping_address</td>
-                     <td>@item.Orders.bank</td>
-                     <td>@item.Orders.type_of_card</td>
-                     <td>@item.Orders.fraud</td>
-                     <td class="prediction-cell">@item.Prediction</td>
-                 </tr> 
-                }
-            }
-        </tbody>
-    </table>
+                <td>@item.Orders.transaction_Id</td>
+                <td>@item.Orders.customer_Id</td>
+                <td>@item.Orders.date</td>
+                <td>@item.Orders.day_of_week</td>
+                <td>@item.Orders.time</td>
+                <td>@item.Orders.entry_mode</td>
+                <td>@item.Orders.amount</td>
+                <td>@item.Orders.type_of_transaction</td>
+                <td>@item.Orders.country_of_transaction</td>
+                <td>@item.Orders.shipping_address</td>
+                <td>@item.Orders.bank</td>
+                <td>@item.Orders.type_of_card</td>
+                <td>@item.Orders.fraud</td>
+                <td class="prediction-cell">@item.Prediction</td>
+            </tr> 
+        }
+    }
+    </tbody>
+</table>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        @for (int i = 1; i <= Model.PaginationInfo.TotalNumPages; i++)
+        {
+            <li class="page-item @(i == Model.PaginationInfo.CurrentPage ? "active" : "")">
+                <a class="page-link" href="@Url.Action("ReviewOrders", new { pageNum = i, pageSize = Model.PaginationInfo.ItemsPerPage })">@i</a>
+            </li>
+        }
+    </ul>
+</nav>

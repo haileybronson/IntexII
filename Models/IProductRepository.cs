@@ -8,6 +8,6 @@ public interface IProductRepository
     
     Product GetProductById(int productId);
     void SaveOrder(Orders order);
-    List<OrderFraudPrediction> GetOrderFraudPredictions();
+    (IEnumerable<OrderFraudPrediction>, int totalCount) GetOrderFraudPredictions(int page, int pageSize);
     Orders GetOrderById(int orderId);
 }

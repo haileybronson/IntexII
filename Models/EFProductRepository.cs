@@ -27,9 +27,16 @@ public class EFProductRepository : IProductRepository
         _context.Orders.Add(order);
         _context.SaveChanges(); //push to sql DB
     }
-    public List<OrderFraudPrediction> GetOrderFraudPredictions()
+    public (IEnumerable<OrderFraudPrediction>, int totalCount) GetOrderFraudPredictions(int page, int pageSize)
     {
-        var records = _context.Orders.Take(20).ToList();  // Fetch 20 records first
+        int totalOrders = _context.Orders.Count();//total count for pagination
+        var Twentyrecords = _context.Orders.Take(20).ToList();  // Fetch 20 records first
+        
+        var records = _context.Orders
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();  // Paginate the records based on page and pageSize
+        
         var predictions = new List<OrderFraudPrediction>();  // Your ViewModel for the view
 
         // Dictionary mapping the numeric prediction to an animal type
@@ -99,7 +106,8 @@ public class EFProductRepository : IProductRepository
 
             predictions.Add(new OrderFraudPrediction { Orders = record, Prediction = predictionResult }); // Adds the animal information and prediction for that animal to AnimalPrediction viewmodel
         }
-        return predictions;
+        return (predictions, totalOrders);
+        //return (predictions, totalOrders);
     }
     
     public IQueryable<Product> Products => _context.Products;

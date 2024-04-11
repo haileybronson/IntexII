@@ -29,12 +29,7 @@ public class HomeController : Controller
             _logger.LogError($"Error loading the ONNX model: {ex.Message}");
         }
     }
-
-    public IActionResult ReviewOrders()
-    {
-        var predictions = _repo.GetOrderFraudPredictions(); // Method to be implemented in EFProductRepository
-        return View(predictions);
-    }
+    
     public IActionResult Index()
     {
         return View();
@@ -48,6 +43,24 @@ public class HomeController : Controller
     public IActionResult AboutUs()
     {
         return View();
+    }
+    
+    public IActionResult ReviewOrders(int pageNum = 1, int pageSize = 5)
+    {
+        var (predictions, totalOrders) = _repo.GetOrderFraudPredictions(pageNum, pageSize);
+    
+        var viewModel = new OrdersListViewModel
+        {
+            Predictions = predictions,
+            PaginationInfo = new PaginationInfo
+            {
+                CurrentPage = pageNum,
+                ItemsPerPage = pageSize,
+                TotalItems = totalOrders
+            }
+        };
+    
+        return View(viewModel);
     }
     
     public ViewResult Products(string? productType, string? colorType, int pageNum =1, int pageSize = 5)
