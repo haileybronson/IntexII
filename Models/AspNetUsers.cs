@@ -1,4 +1,4 @@
-/*
+
 namespace IntexII.Models;
 
 public partial class AspNetUsers
@@ -31,4 +31,3 @@ public partial class AspNetUsers
 
         public int? AccessFailedCount { get; set; }
 }
-*/

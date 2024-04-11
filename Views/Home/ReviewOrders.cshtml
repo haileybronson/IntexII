@@ -55,6 +55,7 @@
     </tr>
     </thead>
     <tbody>
+
     @foreach (var item in Model.Predictions)
     {
         if (item.Prediction == "Fraud")
@@ -74,11 +75,18 @@
                 <td>@item.Orders.type_of_card</td>
                 <td>@item.Orders.fraud</td>
                 <td class="prediction-cell">@item.Prediction</td>
-            </tr> 
+            </tr>
         }
-    }
+        }
+    } 
+
     </tbody>
-</table>
+    </table>
+    
+<div page-model="@Model.PaginationInfo" page-action="Products" page-classes-enabled="true" page-class="btn"
+     page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
+     class="btn-group pull-right m-1">
+</div>
 
 <nav aria-label="Page navigation example">
     <ul class="pagination">
@@ -89,4 +97,5 @@
             </li>
         }
     </ul>
+ 
 </nav>

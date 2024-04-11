@@ -27,6 +27,7 @@ public class EFProductRepository : IProductRepository
         _context.Orders.Add(order);
         _context.SaveChanges(); //push to sql DB
     }
+    
     public (IEnumerable<OrderFraudPrediction>, int totalCount) GetOrderFraudPredictions(int page, int pageSize)
     {
         int totalOrders = _context.Orders.Count();//total count for pagination

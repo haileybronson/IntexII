@@ -8,9 +8,12 @@ public partial class ProductDBContext : DbContext
         : base(options)
     {
     }
-    
     public virtual DbSet<Product> Products { get; set; }
     public virtual DbSet<Orders> Orders { get; set; }
+    
+    public virtual DbSet<ProductRecommendations> ProductRecommendations { get; set; }
+    
+    public virtual DbSet<UserRecommendations> UserRecommendations { get; set; }
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

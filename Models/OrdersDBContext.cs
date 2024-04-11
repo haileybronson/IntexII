@@ -8,8 +8,6 @@ public partial class OrdersDBContext : DbContext
         : base(options)
     {
     }
-
-    public virtual DbSet<Orders> Orders { get; set; }
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
