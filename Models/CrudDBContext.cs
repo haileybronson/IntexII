@@ -11,7 +11,6 @@ namespace IntexII.Data
         {
         }
 
-
         public DbSet<Product> Products { get; set; } // Add this DbSet property
 
 

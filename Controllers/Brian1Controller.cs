@@ -4,6 +4,7 @@ using IntexII.Models;
 using IntexII.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 
+/*
 namespace IntexII.Controllers
 {
     public class Brian1Controller : Controller
@@ -15,6 +16,7 @@ namespace IntexII.Controllers
             _repo = temp;
         }
 
+        
         [Authorize]
         public IActionResult CrudUsers()
         {
@@ -79,3 +81,5 @@ namespace IntexII.Controllers
         }
     }
 }
+
+*/

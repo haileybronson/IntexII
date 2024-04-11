@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using IntexII.Data;
 
-
+/*
 namespace IntexII.Models
 {
     public class EFCrudURepository : ICrudURepository<AspNetUsers>
@@ -60,3 +60,4 @@ namespace IntexII.Models
         }
     }
 }
+*/

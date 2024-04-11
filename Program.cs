@@ -47,6 +47,10 @@ builder.Services.AddDbContext<OrdersDBContext>(options =>
     options.UseSqlServer(builder.Configuration["ConnectionStrings:ProductConnection"]);
 });
 //add orders repopattern
+builder.Services.AddDbContext<CrudDBContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration["ConnectionStrings:ProductConnection"]);
+});
 
 //LineItemsDBContext
 builder.Services.AddDbContext<LineItemsDBContext>(options =>
@@ -70,17 +74,17 @@ builder.Services.AddDbContext<AdminsDBContext>(options =>
 });
 //add admins repo pattern
 
-builder.Services.AddScoped<EFCrudURepository>();
+//builder.Services.AddScoped<EFCrudURepository>();
 // Registering EFCrudRepository
 builder.Services.AddScoped<EFCrudRepository>();
 
 // Registering ICrudRepository<Product> with EFCrudRepository
 builder.Services.AddScoped<ICrudRepository<Product>, EFCrudRepository>();
-builder.Services.AddScoped<ICrudURepository<AspNetUsers>, EFCrudURepository>();
+//builder.Services.AddScoped<ICrudURepository<AspNetUsers>, EFCrudURepository>();
 
 // Registering DbContexts for dependency injection
 builder.Services.AddScoped<CrudDBContext>();
-builder.Services.AddScoped<CrudUDBContext>();
+//builder.Services.AddScoped<CrudUDBContext>();
 
 builder.Services.AddRazorPages();
 

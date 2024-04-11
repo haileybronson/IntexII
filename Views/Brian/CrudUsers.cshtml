@@ -1,8 +1,9 @@
+<!-- 
 <!DOCTYPE html>
 <html>
 <head>
-   <title>Edit Users</title>
-   <style>
+    <title>Edit Users</title>
+    <style>
        /* Centering the table horizontally */
        .table-container {
            margin-bottom: 20px; /* Add margin-bottom to create a gap */
@@ -51,31 +52,33 @@
    </style>
 </head>
 <body>
-   <h4><strong>This will be the CRUD Page for ADMINS ONLY that will be able to edit Users</strong></h4>
-   <a class="btn-add" href="@Url.Action("AddUsers", "Brian1")">Add Users</a>
+<h4><strong>This will be the CRUD Page for ADMINS ONLY that will be able to edit Users</strong></h4>
+<a class="btn-add" @*href="@Url.Action("AddUsers", "Brian1")">Add Users</a>*@
 
-   <div class="table-container">
-       <table>
-           <thead>
-               <tr>
-                   <th>User ID</th>
-                   <th>User Name</th>
-                   <th>Normalized User Name</th>
-                   <th>Email</th>
-                   <th>Normalized Email</th>
-                   <th>Email Confirmed</th>
-                   <th>Password Hash</th>
-                   <th>Security Stamp</th>
-                   <th>Concurrency Stamp</th>
-                   <th>Phone Number</th>
-                   <th>Phone Number Confirmed</th>
-                   <th>Two Factor Enabled</th>
-                   <th>Lockout End</th>
-                   <th>Lockout Enabled</th>
-                   <th>Access Failed Count</th>
-                   <th>Actions</th> <!-- New column for buttons -->
-               </tr>
-           </thead>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+    <th>User ID</th>
+    <th>User Name</th>
+    <th>Normalized User Name</th>
+    <th>Email</th>
+    <th>Normalized Email</th>
+    <th>Email Confirmed</th>
+    <th>Password Hash</th>
+    <th>Security Stamp</th>
+    <th>Concurrency Stamp</th>
+    <th>Phone Number</th>
+    <th>Phone Number Confirmed</th>
+    <th>Two Factor Enabled</th>
+    <th>Lockout End</th>
+    <th>Lockout Enabled</th>
+    <th>Access Failed Count</th>
+    <th>Actions</th> New column for buttons 
+</tr>
+</thead>
+-->
+@*
            <tbody>
            @foreach (var user in Model ?? Enumerable.Empty<AspNetUsers>())
            {
@@ -138,3 +141,6 @@
    </script>
 </body>
 </html>
+
+
+*@

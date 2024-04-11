@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using IntexII.Models;
 
-
+/*
 namespace IntexII.Data
 {
     public class CrudUDBContext : DbContext
@@ -24,3 +24,4 @@ namespace IntexII.Data
         }
     }
 }
+*/
