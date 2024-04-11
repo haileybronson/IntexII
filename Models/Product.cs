@@ -9,9 +9,7 @@ public partial class Product
     
     public int num_Parts { get; set; }
     public int Price { get; set; }
-    
     public string img_Link { get; set; }
-    
     public string primary_Color { get; set; }
     
     public string secondary_Color { get; set; }

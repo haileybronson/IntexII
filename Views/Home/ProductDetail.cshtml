@@ -1,19 +1,26 @@
+
 @{
 ViewData["Title"] = "Products Page";
 }
 
-@model ProductsListViewModel
+@model Product
 
-<!DOCTYPE html>
 
 <html>
 <head>
     <title>This page will be coded for when a user clicks on a product they are taken to a new page with the products detials</title>
     <title>Worry about this last - Configure routing at that time (not in home controller yet)</title>
 </head>
-<body>
+
 <div>
-      
+    <h2>@Model.ProductName</h2>
+    <p>Price: $@Model.Price</p>
+    <p>Category: @Model.Category</p>
+    <p>Color: @Model.primary_Color</p>
+    <p>Color: @Model.Description</p>
+    <!-- Add more details as necessary -->
+    @if (!string.IsNullOrEmpty(Model.img_Link))
+    {
+        <img src="@Model.img_Link" alt="Image of @Model.ProductName" style="max-width:100%; height:auto;">
+    }
 </div>
-</body>
-</html>

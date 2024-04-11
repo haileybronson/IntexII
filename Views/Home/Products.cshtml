@@ -1,19 +1,46 @@
+
 @{
     ViewData["Title"] = "Products Page";
 }
 
 @model ProductsListViewModel
 
-<h1>The Store</h1>
-<h4><strong>We will need to implement the ability to choose to display by 5, 10, or 20 results</strong></h4>
-<h4><strong>And we need the ability to filter by Category and Color</strong></h4>
+<div class="container-fluid">
+    <h1>The Store</h1>
+    <h4><strong>We will need to implement the ability to choose to display by 5, 10, or 20 results</strong></h4>
+    <h4><strong>And we need the ability to filter by Category and Color</strong></h4>
 
-    @foreach (Product b in Model.Products)
-    {
-        <partial name="ProductSummary" model="b"/>
-    }
-    
-   
-   <div page-model="@Model.PaginationInfo" page-action="Index" page-classes-enabled="true" page-class="btn" 
-        page-class-normal="btn-outline-dark" page-class-selected="btn-primary" 
-        page-url-productType="@Model.CurrentProductType" class="btn-group pull-right m-1"></div>
+    <div class="row">
+        <!-- Filter Column -->
+        <div class="col-md-3">
+            <!-- Product Types Filter -->
+            <vc:product-types/>
+            <br/>
+            <<vc:color-type/>
+            <!-- Add Pagination Size Filter here -->
+        </div>
+        
+        
+
+        <!-- Products Column -->
+        <div class="col-md-9">
+            <!-- Products List -->
+            @foreach (Product b in Model.Products)
+            {
+                <partial name="ProductSummary" model="b"/>
+            }
+            
+            @foreach (var size in Model.AvailablePageSizes)
+            {
+                <a href="@Url.Action("Products", "Home", new { productType = Model.CurrentProductType, colorType = Model.CurrentColorType, pageNum = 1, pageSize = size })" class="btn @(Model.SelectedPageSize == size ? "btn-primary" : "btn-outline-secondary")">@size</a>
+            }
+
+            <!-- Pagination -->
+            <div page-model="@Model.PaginationInfo" page-action="Products" page-classes-enabled="true" page-class="btn"
+                 page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
+                 page-url-productType="@Model.CurrentProductType" page-url-colorType="@Model.CurrentColorType" page-url-pageSize="@Model.SelectedPageSize" 
+                 class="btn-group pull-right m-1">
+            </div>
+        </div>
+    </div>
+</div>
