@@ -108,7 +108,9 @@ var app = builder.Build();
 app.Use(async (ctx, next) =>
 {
     ctx.Response.Headers.Add("Content-Security-Policy",
-        "default-src 'self'");
+        "default-src 'self'; " +
+        "font-src 'self' fonts.gstatic.com; " +
+        "style-src 'self' fonts.googleapis.com");
     await next();
 });
 
