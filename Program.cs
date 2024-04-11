@@ -35,10 +35,6 @@ builder.Services.AddDbContext<ProductDBContext>(options =>
 builder.Services.AddScoped<IProductRepository, EFProductRepository>();
 
 //usersDBContext
-builder.Services.AddDbContext<UsersDBContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration["ConnectionStrings:ProductConnection"]);
-});
 //add repo pattern
 
 //ordersDBcontext

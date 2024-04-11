@@ -4,82 +4,78 @@ using IntexII.Models;
 using IntexII.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 
-/*
 namespace IntexII.Controllers
 {
     public class Brian1Controller : Controller
     {
-        private readonly ICrudURepository<AspNetUsers> _repo;
+        private readonly ICrudURepository<Customers> _repo;
 
-        public Brian1Controller(ICrudURepository<AspNetUsers> temp)
+        public Brian1Controller(ICrudURepository<Customers> temp)
         {
             _repo = temp;
         }
 
-        
         [Authorize]
-        public IActionResult CrudUsers()
+        public IActionResult CrudCustomers()
         {
-            var users = _repo.GetAllUsers();
-            return View(users);
+            var customers = _repo.GetAllCustomers();
+            return View(customers);
         }
 
         [Authorize]
-        public IActionResult UpdateUsers(int id)
+        public IActionResult UpdateCustomer(int id)
         {
-            var user = _repo.GetUsersById(id);
-            if (user == null)
+            var customer = _repo.GetCustomersById(id);
+            if (customer == null)
             {
                 return NotFound();
             }
-            return View(user);
+            return View(customer);
         }
 
         [HttpPost]
         [Authorize]
-        public IActionResult UpdateUsers(AspNetUsers user)
+        public IActionResult UpdateCustomer(Customers customer)
         {
             if (ModelState.IsValid)
             {
-                _repo.UpdateUsers(user);
-                return RedirectToAction(nameof(CrudUsers));
+                _repo.UpdateCustomers(customer);
+                return RedirectToAction(nameof(CrudCustomers));
             }
-            return View(user);
+            return View(customer);
         }
 
         [HttpPost]
         [Authorize]
-        public IActionResult DeleteUsers(int id)
+        public IActionResult DeleteCustomer(int id)
         {
-            var user = _repo.GetUsersById(id);
-            if (user == null)
+            var customer = _repo.GetCustomersById(id);
+            if (customer == null)
             {
                 return NotFound();
             }
 
-            _repo.DeleteUsers(user);
-            return RedirectToAction(nameof(CrudUsers));
+            _repo.DeleteCustomers(id);
+            return RedirectToAction(nameof(CrudCustomers));
         }
 
-        public IActionResult AddUsers()
+        public IActionResult AddCustomer()
         {
             return View();
         }
 
         [HttpPost]
         [Authorize]
-        public IActionResult AddUsers(AspNetUsers user)
+        public IActionResult AddCustomer(Customers customer)
         {
             if (ModelState.IsValid)
             {
-                _repo.InsertUsers(user);
-                return RedirectToAction(nameof(CrudUsers));
+                _repo.InsertCustomers(customer);
+                return RedirectToAction(nameof(CrudCustomers));
             }
 
             // If ModelState is not valid, return the form with validation errors
-            return View(user);
+            return View(customer);
         }
     }
 }
-
-*/

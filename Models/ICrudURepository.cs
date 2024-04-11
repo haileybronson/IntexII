@@ -4,10 +4,10 @@ namespace IntexII.Models
 {
     public interface ICrudURepository<TEntity> where TEntity : class
     {
-        IEnumerable<TEntity> GetAllUsers();
-        TEntity GetUsersById(object id);
-        void InsertUsers(TEntity entity);
-        void UpdateUsers(TEntity entity);
-        void DeleteUsers(object id); // Keep the parameter type as object id
+        IEnumerable<TEntity> GetAllCustomers();
+        TEntity GetCustomersById(object id);
+        void InsertCustomers(TEntity entity);
+        void UpdateCustomers(TEntity entity);
+        void DeleteCustomers(object id); // Keep the parameter type as object id
     }
 }

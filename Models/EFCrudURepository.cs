@@ -2,10 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using IntexII.Data;
 
-/*
 namespace IntexII.Models
 {
-    public class EFCrudURepository : ICrudURepository<AspNetUsers>
+    public class EFCrudURepository : ICrudURepository<Customers>
     {
         private readonly CrudUDBContext _context;
 
@@ -16,48 +15,47 @@ namespace IntexII.Models
         }
 
 
-        public IEnumerable<AspNetUsers> GetAllUsers()
+        public IEnumerable<Customers> GetAllCustomers()
         {
-            return _context.Users.ToList();
+            return _context.Customers.ToList();
         }
 
 
-        public AspNetUsers GetUsersById(object id)
+        public Customers GetCustomersById(object id)
         {
             if (id is int Id)
             {
-                return _context.Users.Find(Id);
+                return _context.Customers.Find(id);
             }
             return null;
         }
 
 
-        public void InsertUsers(AspNetUsers users)
+        public void InsertCustomers(Customers Customers)
         {
-            _context.Users.Add(users);
+            _context.Customers.Add(Customers);
             _context.SaveChanges();
         }
 
 
-        public void UpdateUsers(AspNetUsers users)
+        public void UpdateCustomers(Customers Customers)
         {
-            _context.Users.Update(users);
+            _context.Customers.Update(Customers);
             _context.SaveChanges();
         }
 
 
-        public void DeleteUsers(object id)
+        public void DeleteCustomers(object id)
         {
             if (id is int entityId)
             {
-                var entity = _context.Users.Find(entityId);
+                var entity = _context.Customers.Find(entityId);
                 if (entity != null)
                 {
-                    _context.Users.Remove(entity);
+                    _context.Customers.Remove(entity);
                     _context.SaveChanges();
                 }
             }
         }
     }
 }
-*/

@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using IntexII.Models;
 
-/*
 namespace IntexII.Data
 {
     public class CrudUDBContext : DbContext
@@ -12,7 +11,7 @@ namespace IntexII.Data
         }
 
 
-        public DbSet<AspNetUsers> Users { get; set; } // Add this DbSet property
+        public DbSet<Customers> Customers { get; set; } // Add this DbSet property
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -24,4 +23,3 @@ namespace IntexII.Data
         }
     }
 }
-*/
