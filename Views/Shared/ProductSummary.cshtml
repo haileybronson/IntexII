@@ -15,6 +15,10 @@
         <li>Price: @Model.Price</li>
 
     </ul>
+    <form action="@Url.Action("ProductDetail", "Home", new { productId = Model.ProductId })" method="get">
+            <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.Path@ViewContext.HttpContext.Request.QueryString"/>
+            <button type="submit" class="btn-outline-success btn-sm float-end">More Details</button>
+    </form>
     <form id=@Model.ProductId method="post" asp-page="/Cart">
         <input type="hidden" asp-for="ProductId"/>
         <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>

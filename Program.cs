@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using IntexII.Data;
 using IntexII.Models;
+using Microsoft.ML.OnnxRuntime;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -79,6 +80,12 @@ builder.Services.AddSession();
 //additional service for the session, via book 
 builder.Services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+services.AddSingleton<InferenceSession>(sp => 
+{
+    // Make sure to handle the path to the ONNX model file correctly.
+    return new InferenceSession("decision_tree_model (1).onnx");
+});
+
 
 var app = builder.Build();
 
@@ -114,13 +121,17 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 //order matters, it will take the first one without looking at the second
-//app.MapControllerRoute("pagenumandtype", "{productType}/{pageNum}", new { Controller = "Home", action = "Index" });
-//app.MapControllerRoute("pagination", "{pageNum}", new {Controller = "Home", action ="Index", pageNum = 1});
-//app.MapControllerRoute("productType", "{productType}", new { Controller = "Home", action = "Index", pageNum = 1 });
-app.MapControllerRoute("pagenumandtype", "{productType}/Page{pageNum}", new { Controller = "Home", Action = "Index" });
-app.MapControllerRoute("page", "Page/{pageNum}", new { Controller = "Home", Action = "Index", pageNum = 1 });
-app.MapControllerRoute("productType", "{productType}", new { Controller = "Home", Action = "Index", pageNum = 1 });
-app.MapControllerRoute("pagination", "Products/Page{pageNum}", new { Controller = "Home", Action = "Index", pageNum = 1 });
+
+//app.MapControllerRoute("pagenumandproducttype", "{productType}/Page{pageNum}", new { Controller = "Home", Action = "Products" });
+//app.MapControllerRoute("pagenumandcolortype", "{colorType}/Page{pageNum}", new { Controller = "Home", Action = "Products" });
+//app.MapControllerRoute("page", "Page/{pageNum}", new { Controller = "Home", Action = "Products", pageNum = 1 });
+//app.MapControllerRoute("productType", "{productType}", new { Controller = "Home", Action = "Products", pageNum = 1 });
+//app.MapControllerRoute("colorType", "{colorType}", new { Controller = "Home", Action = "Products", pageNum = 1 });
+//app.MapControllerRoute("pagination", "Products/Page{pageNum}", new { Controller = "Home", Action = "Products", pageNum = 1 });
+
+
+app.MapControllerRoute("products","Products/Page{pageNum}", new { Controller = "Home", Action = "Products", pageNum = 1 });
+app.MapControllerRoute("productDetail", "Home/ProductDetail/{productId}", new { Controller = "Home", Action = "ProductDetail" });
 
 app.MapDefaultControllerRoute();
 
