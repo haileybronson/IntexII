@@ -1,3 +1,4 @@
+/*BUILT IN CSS*/
 html {
   font-size: 14px;
 }
@@ -19,4 +20,55 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+/* font */
+:root {
+  font-family: Inter, sans-serif;
+  font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+}
+@supports (font-variation-settings: normal) {
+  :root { font-family: InterVariable, sans-serif; }
+}
+
+/* navbar */
+.navbar-nav .nav-item .nav-link:hover {
+  color: #6441d7 !important;
+}
+
+/* footer*/
+.footer {
+  background-color: #F0F0F0;
+  color: #333;
+}
+
+/* header */
+.gradient-header {
+  height: 200px;
+  width: 100vw;
+  background: linear-gradient(to right, #6441D7, #AF41D7);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  font-size: 75px;
+  margin-bottom: 10px;
+  font-weight: lighter;
+}
+
+.subtitle {
+  font-size: 24px;
+  font-weight: lighter;
+}
+
+/* imgs within circles */
+.circle-img {
+  border-radius: 50%;
+  width: 400px; /* Adjust size as needed */
+  height: 400px; /* Adjust size as needed */
+  object-fit: cover;
 }

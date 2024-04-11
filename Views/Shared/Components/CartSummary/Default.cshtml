@@ -15,7 +15,12 @@
     
     <a class="btn btn-sm btn-secondary navbar-btn" asp-page="/Cart"
        asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()">
-        <i class="fa fa-shopping-cart"></i>
+        <i class="fa-light fa-cart-shopping"></i>
     </a>
-        
+    
+    @* <a class="nav-link text-dark" asp-page="/Cart" *@
+    @*    asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()"> *@
+    @*     <i class="fa-light fa-cart-shopping"></i> *@
+    @* </a> *@
+
 </div>
