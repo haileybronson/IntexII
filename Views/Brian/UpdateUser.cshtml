@@ -1,0 +1,78 @@
+@model IntexII.Models.AspNetUsers
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Users</title>
+</head>
+<body>
+<h2>Update Product</h2>
+<form asp-action="UpdateUsers" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div>
+        <label asp-for="Id"></label>
+        <input asp-for="Id" />
+    </div>
+    <div>
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" />
+    </div>
+    <div>
+        <label asp-for="NormalizedUserName"></label>
+        <input asp-for="NormalizedUserName" />
+    </div>
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+    </div>
+    <div>
+        <label asp-for="NormalizedEmail"></label>
+        <input asp-for="NormalizedEmail" />
+    </div>
+    <div>
+        <label asp-for="EmailConfirmed"></label>
+        <input asp-for="EmailConfirmed" />
+    </div>
+    <div>
+        <label asp-for="PasswordHash"></label>
+        <input asp-for="PasswordHash" />
+    </div>
+    <div>
+        <label asp-for="SecurityStamp"></label>
+        <input asp-for="SecurityStamp" />
+    </div>
+    <div>
+        <label asp-for="ConcurrencyStamp"></label>
+        <input asp-for="ConcurrencyStamp" />
+    </div>
+    <div>
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber" />
+    </div>
+    <div>
+        <label asp-for="PhoneNumberConfirmed"></label>
+        <input asp-for="PhoneNumberConfirmed" />
+    </div>
+    <div>
+        <label asp-for="TwoFactorEnabled"></label>
+        <input asp-for="TwoFactorEnabled" />
+    </div>
+    <div>
+        <label asp-for="LockoutEnd"></label>
+        <input asp-for="LockoutEnd" />
+    </div>
+    <div>
+        <label asp-for="LockoutEnabled"></label>
+        <input asp-for="LockoutEnabled" />
+    </div>
+    <div>
+        <label asp-for="AccessFailedCount"></label>
+        <input asp-for="AccessFailedCount" />
+    </div>
+
+    <div>
+        <button type="submit">Update</button>
+    </div>
+</form>
+</body>
+</html>

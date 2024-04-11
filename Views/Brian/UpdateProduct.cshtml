@@ -1,0 +1,53 @@
+@model IntexII.Models.Product
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Product</title>
+</head>
+<body>
+<h2>Update Product</h2>
+<form asp-action="UpdateProduct" method="post">
+    <input type="hidden" asp-for="ProductId" />
+    <div>
+        <label asp-for="ProductName"></label>
+        <input asp-for="ProductName" />
+    </div>
+    <div>
+        <label asp-for="Year"></label>
+        <input asp-for="Year" />
+    </div>
+    <div>
+        <label asp-for="num_Parts"></label>
+        <input asp-for="num_Parts" />
+    </div>
+    <div>
+        <label asp-for="Price"></label>
+        <input asp-for="Price" />
+    </div>
+    <div>
+        <label asp-for="img_Link"></label>
+        <input asp-for="img_Link" />
+    </div>
+    <div>
+        <label asp-for="primary_Color"></label>
+        <input asp-for="primary_Color" />
+    </div>
+    <div>
+        <label asp-for="secondary_Color"></label>
+        <input asp-for="secondary_Color" />
+    </div>
+    <div>
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description"></textarea>
+    </div>
+    <div>
+        <label asp-for="Category"></label>
+        <input asp-for="Category" />
+    </div>
+    <div>
+        <button type="submit">Update</button>
+    </div>
+</form>
+</body>
+</html>
