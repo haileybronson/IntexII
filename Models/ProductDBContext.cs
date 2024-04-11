@@ -10,6 +10,7 @@ public partial class ProductDBContext : DbContext
     }
     
     public virtual DbSet<Product> Products { get; set; }
+    public virtual DbSet<Orders> Orders { get; set; }
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
