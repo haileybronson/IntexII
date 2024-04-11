@@ -11,7 +11,7 @@
     
     <!-- Visible but not editable -->
     <input type="text" name="date" value="@Model.date" readonly />
-    <input type="text" name="day_of_week" value="@Model.day_of_week" />
+    <input type="text" name="day_of_week" value="@Model.day_of_week.Substring(0, 3)" readonly />
     <input type="text" name="time" value="@Model.time" readonly />
     <input type="text" name="type_of_transaction" value="@Model.type_of_transaction" readonly />
 
@@ -19,12 +19,12 @@
     <input type="hidden" name="entry_mode" value="@Model.entry_mode" />
     
     <!-- Editable by user -->
-    <input type="text" name="amount" value="@Model.amount" placeholder="Amount" required />
-    <input type="text" name="country_of_transaction" value="@Model.country_of_transaction" placeholder="Country of Transaction" required />
-    <input type="text" name="shipping_address" value="@Model.shipping_address" placeholder="Shipping Address" required />
-    <input type="text" name="bank" value="@Model.bank" placeholder="Bank" required />
+    <input type="number" name="amount" value="@Model.amount" placeholder="Amount" required step="1" min="0" />
+    <input type="text" name="country_of_transaction" value="@Model.country_of_transaction" placeholder="Country of Transaction" required pattern="^(United Kingdom|USA|India|China|Russia)$"/>
+    <input type="text" name="shipping_address" value="@Model.shipping_address" placeholder="Shipping Address" required pattern="^(United Kingdom|USA|India|China|Russia)$"/>
+    <input type="text" name="bank" value="@Model.bank" placeholder="Bank" required pattern="^(Halifax|Barclays|RBS|HSBC|Metro|Monzo|Lloyds)$"/>
 
-    <input type="text" name="type_of_card" value="@Model.type_of_card" placeholder="Card" required />
+    <input type="text" name="type_of_card" value="@Model.type_of_card" placeholder="Card Type" required pattern="^(MasterCard|Visa)$"/>
 
     <input type="submit" value="Submit Order" />
 </form>
