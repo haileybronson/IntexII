@@ -9,6 +9,14 @@ var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var configuration = builder.Configuration;
 
+// Configures the HSTS services
+builder.Services.AddHsts(options =>
+{
+    options.MaxAge = TimeSpan.FromDays(30);  // Sets the duration to 30, default
+    options.IncludeSubDomains = true;        // This ensures that the HSTS policy is applied to all subdomains
+    options.Preload = true;                  // This includes our domain in browsers' preload list so they know to always use HTTPS
+});
+
 services.AddAuthentication().AddGoogle(googleOptions =>
 {
     googleOptions.ClientId = configuration["Authentication_Google_ClientId"];
@@ -114,15 +122,9 @@ app.Use(async (ctx, next) =>
     await next();
 });
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// Use HSTS middleware
+if (!app.Environment.IsDevelopment())
 {
-    app.UseMigrationsEndPoint();
-}
-else
-{
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -137,18 +139,19 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-//order matters, it will take the first one without looking at the second
+//order matters, most specific should come first
 
 //app.MapControllerRoute("pagenumandproducttype", "{productType}/Page{pageNum}", new { Controller = "Home", Action = "Products" });
 //app.MapControllerRoute("pagenumandcolortype", "{colorType}/Page{pageNum}", new { Controller = "Home", Action = "Products" });
-//app.MapControllerRoute("page", "Page/{pageNum}", new { Controller = "Home", Action = "Products", pageNum = 1 });
 //app.MapControllerRoute("productType", "{productType}", new { Controller = "Home", Action = "Products", pageNum = 1 });
 //app.MapControllerRoute("colorType", "{colorType}", new { Controller = "Home", Action = "Products", pageNum = 1 });
-//app.MapControllerRoute("pagination", "Products/Page{pageNum}", new { Controller = "Home", Action = "Products", pageNum = 1 });
 
+app.MapControllerRoute("products","Products/{pageNum}", new {Controller = "Home", action = "Products", pageNum = 1});
+app.MapControllerRoute("productDetail", "ProductDetail/{productId}", new {Controller = "Home", action = "ProductDetail"});
 
-app.MapControllerRoute("products","Products/Page{pageNum}", new { Controller = "Home", Action = "Products", pageNum = 1 });
-app.MapControllerRoute("productDetail", "Home/ProductDetail/{productId}", new { Controller = "Home", Action = "ProductDetail" });
+//name: "productsWithColor",
+// pattern: "Products/{productId}/{colorType}",
+// defaults: new { Controller = "Home", Action = "ProductDetails" }
 
 app.MapDefaultControllerRoute();
 
