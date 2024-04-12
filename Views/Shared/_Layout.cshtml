@@ -63,19 +63,21 @@
                             </div>
                         </li>
                     </ul>
+                    <partial name="_LoginPartial" />
                 </div>
             </div>
-            
-            <div>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Logout</a>
-                    </li>
-                </ul>
-            </div>
+        <!--
+        <div>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Logout</a>
+                </li>
+            </ul>
+        </div>
+        -->
 </div>
     </nav>
 </header>
@@ -111,18 +113,20 @@ else if (User.IsInRole("Cust"))
                         <vc:cart-summary/>
                     </li>
                 </ul>
+                <partial name="_LoginPartial" />
             </div>
-            
-            <div>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Logout</a>
-                    </li>
-                </ul>
-            </div>
+        <!--
+        <div>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Logout</a>
+                </li>
+            </ul>
+        </div>
+        -->
         </div>
     </nav>
 </header>
@@ -168,18 +172,21 @@ else
                         <vc:cart-summary/>
                     </li>
                 </ul>
+                <partial name="_LoginPartial" />
             </div>
             
-            <div>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Login</a>
-                    </li>
-                </ul>
-            </div>
+        <!--
+        <div>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Login</a>
+                </li>
+            </ul>
+        </div>
+        -->
         </div>
     </nav>
 </header>
