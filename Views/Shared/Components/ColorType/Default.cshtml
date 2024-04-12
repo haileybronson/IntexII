@@ -1,15 +1,16 @@
-
-@{
-}
-
-
 @model IEnumerable<string>
 
-<div class="d-grid gap-2">
-    <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="Products" asp-route-colorType="" asp-route-pageNum="">Home</a>
-    
-    @foreach (string bt in Model ?? Enumerable.Empty<string>())
-    {
-        <a class="btn @(bt == ViewBag.SelectedColorType ? "btn-primary" : "btn-outline-secondary")"  asp-controller="Home" asp-action="Products" asp-route-colorType="@bt" asp-route-pageNum="1">@bt</a>
-    }
+<div class="dropdown">
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="colorFilterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        Filter by Color
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="colorFilterDropdown">
+        <li><a class="dropdown-item" asp-controller="Home" asp-action="Products" asp-route-colorType="" asp-route-pageNum="">All</a></li>
+        @foreach (string bt in Model ?? Enumerable.Empty<string>())
+        {
+            <li>
+                <a class="dropdown-item @(bt == ViewBag.SelectedColorType ? "active" : "")" asp-controller="Home" asp-action="Products" asp-route-colorType="@bt" asp-route-pageNum="1">@bt</a>
+            </li>
+        }
+    </ul>
 </div>
