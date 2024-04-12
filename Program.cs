@@ -152,19 +152,20 @@ app.MapControllerRoute("productDetail", "Home/ProductDetail/{productId}", new { 
 
 app.MapDefaultControllerRoute();
 
-/*
+
 using (var scope = app.Services.CreateScope())
 {
     var serviceProvider = scope.ServiceProvider;
     var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
     var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
     await SeedRolesAsync(userManager, roleManager);
-    await SeedAdminUserAsync(userManager, roleManager);
+    //await SeedAdminUserAsync(userManager, roleManager);
 }
+/*
 async Task SeedAdminUserAsync(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
 {
     string adminEmail = "admin@email.com"; // Use a secure way to store and retrieve this
-    string adminPassword = "GroupPiIntex314"; // Use a secure way to store and retrieve this
+    string adminPassword = "GroupPiIntex314!"; // Use a secure way to store and retrieve this
     var adminUser = await userManager.FindByEmailAsync(adminEmail);
     if (adminUser == null)
     {
@@ -214,6 +215,7 @@ async Task SeedAdminUserAsync(UserManager<IdentityUser> userManager, RoleManager
         }
     }
 }
+*/
 
 async Task SeedRolesAsync(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
 {
@@ -228,7 +230,7 @@ async Task SeedRolesAsync(UserManager<IdentityUser> userManager, RoleManager<Ide
         await roleManager.CreateAsync(userRole);
     }
 }
-*/
+
 app.MapRazorPages();
 app.Run();
 

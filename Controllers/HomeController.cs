@@ -47,7 +47,7 @@ public class HomeController : Controller
     }
     
 
-    [Authorize(Roles = "ADMIN")]
+    [Authorize(Roles = "Admin")]
     public IActionResult ReviewOrders(int pageNum = 1, int pageSize = 5)
     {
         var (predictions, totalOrders) = _repo.GetOrderFraudPredictions(pageNum, pageSize);
@@ -108,9 +108,21 @@ public class HomeController : Controller
             // Handle the case where the product is not found
             return NotFound("Product out of stock, wait til later!");
         }
+        // Fetch recommendations based on the productId
+        var recommendationIds = _repo.GetRecommendationIdsByProductId(productId);
+        var recommendations = recommendationIds
+            .Select(id => _repo.GetProductById(productId))
+            .Where(p => p != null) // Ensure no null entries if a product wasn't found
+            .ToList();
 
+        // Construct the view model with the product and its recommendations
+        var viewModel = new ProductRecsViewModel
+        {
+            Product = product,
+            Recommendations = recommendations
+        };
         // If the product is found, pass it to the view
-        return View(product);
+        return View(viewModel);
     }
     
     // GET action for the order form

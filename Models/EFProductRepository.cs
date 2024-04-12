@@ -15,6 +15,26 @@ public class EFProductRepository : IProductRepository
         _session = session;
     }
     
+    public IEnumerable<string> GetRecommendationIdsByProductId(int productId)
+    {
+        var productRecommendations = _context.ProductRecommendations
+            .Where(pr => pr.ProductId == productId)
+            .ToList();
+        
+        var recommendations = productRecommendations
+            .SelectMany(pr => new List<string>
+            {
+                pr.recommendation_1,
+                pr.recommendation_2,
+                pr.recommendation_3,
+                pr.recommendation_4,
+                pr.recommendation_5
+            })
+            .ToList();
+
+        return recommendations;
+    }
+    
     public void SaveOrder(Orders order)
     {
         // Assuming transaction_Id and customer_Id need manual setting

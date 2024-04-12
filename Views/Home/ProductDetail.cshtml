@@ -3,7 +3,7 @@
 ViewData["Title"] = "Products Page";
 }
 
-@model Product
+@model ProductRecsViewModel
 
 @* Still need to create button that takes product and adds it too cart if the user is logged in. *@
 @* If not, send to login page *@
@@ -12,17 +12,35 @@ ViewData["Title"] = "Products Page";
 <div class="container product-details">
         <div class="row">
             <div class="col-md-6 product-image">
-                @if (!string.IsNullOrEmpty(Model.img_Link))
+                @if (!string.IsNullOrEmpty(Model.Product.img_Link))
                 {
-                    <img src="@Model.img_Link" alt="Image of @Model.ProductName">
+                    <img src="@Model.Product.img_Link" alt="Image of @Model.Product.ProductName">
                 }
             </div>
             <div class="col-md-6">
-                <h1 class="product-title">@Model.ProductName</h1>
-                <p class="product-price">$@Model.Price</p>
-                <p class="product-info"><strong>Category:</strong>  @Model.Category</p>
-                <p class="product-info"><strong>Color:</strong>  @Model.primary_Color</p>
-                <p class="product-info indent"> @Model.Description</p>
+                <h2 class="product-title">@Model.Product.ProductName</h2>
+                <p class="product-price">Price: $@Model.Product.Price</p>
+                <p class="product-info">Category: @Model.Product.Category</p>
+                <p class="product-info">Color: @Model.Product.primary_Color</p>
+                <p class="product-info indent">Color: @Model.Product.Description</p>
+                @if (Model.Recommendations.Any())
+                {
+                    <div>
+                        <h3 class="product-title">Aurora's Recommendataions For You</h3>
+                        @foreach (var rec in Model.Recommendations)
+                        {
+                            <div>
+                                <h4>@rec.ProductName</h4>
+                                <!-- Assuming there is an image link property -->
+                                <img src="@rec.img_Link" alt="Image of @rec.ProductName" style="max-width:100%; height:auto;">
+                            </div>
+                        }
+                    </div>
+                }
             </div>
         </div>
     </div>
+
+<html>
+
+
