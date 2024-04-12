@@ -6,11 +6,17 @@
 
 @model IEnumerable<string>
 
-<div class="d-grid gap-2">
-    <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="Products" asp-route-productType="" asp-route-pageNum="">Home</a>
-    
+<div class="dropdown">
+  <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+    Filter by Category
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+    <li><a class="dropdown-item" asp-controller="Home" asp-action="Products" asp-route-productType="" asp-route-pageNum="">All</a></li>
     @foreach (string bt in Model ?? Enumerable.Empty<string>())
     {
-        <a class="btn @(bt == ViewBag.SelectedProductType ? "btn-primary" : "btn-outline-secondary")"  asp-controller="Home" asp-action="Products" asp-route-productType="@bt" asp-route-pageNum="1">@bt</a>
+      <li>
+        <a class="dropdown-item @(bt == ViewBag.SelectedProductType ? "active" : "")" asp-controller="Home" asp-action="Products" asp-route-productType="@bt" asp-route-pageNum="1">@bt</a>
+      </li>
     }
+  </ul>
 </div>
