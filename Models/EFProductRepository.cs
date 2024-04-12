@@ -51,10 +51,7 @@ public class EFProductRepository : IProductRepository
     public (IEnumerable<OrderFraudPrediction>, int totalCount) GetOrderFraudPredictions(int page, int pageSize)
    {
        int totalOrders = _context.Orders.Count();//total count for pagination
-       var records = _context.Orders
-           .OrderByDescending(o => o.transaction_Id)
-           .Take(500)
-           .ToList();  // Fetch 20 records first
+       var records = _context.Orders.Take(1000).ToList();  // Fetch 20 records first
       
        var predictions = new List<OrderFraudPrediction>();  // Your ViewModel for the view
 

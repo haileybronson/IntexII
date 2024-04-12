@@ -126,6 +126,7 @@ public class HomeController : Controller
     }
     
     // GET action for the order form
+    [Authorize]
     public IActionResult CreateOrder()
     {
         var newOrder = new Orders
