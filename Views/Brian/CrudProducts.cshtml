@@ -1,138 +1,73 @@
-<!DOCTYPE html>
-<html>
-<head>
-   <title>Edit Products</title>
-   <style>
-       /* Centering the table horizontally */
-       .table-container {
-           margin-bottom: 20px; /* Add margin-bottom to create a gap */
-       }
+<div class="gradient-header">
+    <div>
+        <h1 class="title">Update Product</h1>
+        <h2 class="subtitle">This page allows administrators to edit products</h2>
+    </div>
+</div>
 
+<div class="container m-4">
+<a class="btn btn-success btn-lg" href="@Url.Action("AddProduct", "Brian")" role="button">Add Product</a>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Year</th>
+                <th># of Parts</th>
+                <th>Price</th>
+                <th>Image Link</th>
+                <th>Pri Color</th>
+                <th>Sec Color</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.ProductId</td>
+                    <td>@(product.ProductName.Length > 30 ? product.ProductName.Substring(0, 30) + "..." : product.ProductName)</td>
+                    <td>@product.Year</td>
+                    <td>@product.num_Parts</td>
+                    <td>@product.Price</td>
+                    <td>@(product.img_Link.Length > 20 ? product.img_Link.Substring(0, 20) + "..." : product.img_Link)</td>
+                    <td>@product.primary_Color</td>
+                    <td>@product.secondary_Color</td>
+                    <td>@(product.Description.Length > 20 ? product.Description.Substring(0, 20) + "..." : product.Description)</td>
+                    <td>@product.Category</td>
+                    <td>
+                        <button type="button" class=" btn-danger btn-sm" onclick="confirmDelete('@product.ProductName', @product.ProductId)">Delete</button>
+                        <a class="btn btn-primary btn-sm" href="@Url.Action("UpdateProduct", "Brian", new { id = product.ProductId })">Edit</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
 
-       table {
-           margin-left: auto;
-           margin-right: auto;
-       }
+    <!-- JavaScript to handle the confirmation dialog -->
+    <script>
+        function confirmDelete(productName, productId) {
+            if (confirm("Are you sure you want to delete " + productName + "?")) {
+                var form = document.createElement("form");
+                form.method = "post";
+                form.action = "@Url.Action("DeleteProduct", "Brian")";
 
+                var hiddenInput = document.createElement("input");
+                hiddenInput.type = "hidden";
+                hiddenInput.name = "id";
+                hiddenInput.value = productId;
 
-       /* Other CSS styles for the table */
-       th, td {
-           border: 1px solid #dddddd;
-           text-align: left;
-           padding: 8px;
-       }
+                form.appendChild(hiddenInput);
 
-
-       tr:nth-child(even) {
-           background-color: #f2f2f2;
-       }
-
-
-       .description {
-           max-width: 300px;
-           overflow: hidden;
-           text-overflow: ellipsis;
-           white-space: nowrap;
-       }
-
-
-       .btn-edit {
-           background-color: #007bff;
-           color: #fff;
-           border: none;
-           padding: 5px 10px;
-           border-radius: 5px;
-           cursor: pointer;
-       }
-
-
-       .btn-delete {
-           background-color: #dc3545;
-           color: #fff;
-           border: none;
-           padding: 5px 10px;
-           border-radius: 5px;
-           cursor: pointer;
-       }
-   </style>
-</head>
-<body>
-   <h4><strong>This will be the CRUD Page for ADMINS ONLY that will be able to edit Products</strong></h4>
-   <a class="btn-add" href="@Url.Action("AddProduct", "Brian")">Add Product</a>
-
-
-   <div class="table-container">
-       <table>
-           <thead>
-               <tr>
-                   <th>Product ID</th>
-                   <th>Product Name</th>
-                   <th>Year</th>
-                   <th>Number of Parts</th>
-                   <th>Price</th>
-                   <th>Image Link</th>
-                   <th>Primary Color</th>
-                   <th>Secondary Color</th>
-                   <th>Description</th>
-                   <th>Category</th>
-                   <th>Actions</th> <!-- New column for buttons -->
-               </tr>
-           </thead>
-           <tbody>
-               @foreach (var product in Model)
-               {
-                   <tr>
-                       <td>@product.ProductId</td>
-                       <td>@product.ProductName</td>
-                       <td>@product.Year</td>
-                       <td>@product.num_Parts</td>
-                       <td>@product.Price</td>
-                       <td>@product.img_Link</td>
-                       <td>@product.primary_Color</td>
-                       <td>@product.secondary_Color</td>
-                       <td class="description">@product.Description</td>
-                       <td>@product.Category</td>
-                       <td>
-                           <!-- Delete button with confirmation dialog -->
-                           <button type="button" class="btn-delete" onclick="confirmDelete('@product.ProductName', @product.ProductId)">Delete</button>
-                           <!-- Link to route to UpdateProduct action with product ID -->
-                           <a class="btn-edit" href="@Url.Action("UpdateProduct", "Brian", new { id = product.ProductId })">Edit</a>
-                       </td>
-                   </tr>
-               }
-           </tbody>
-       </table>
-   </div>
-   <br/><br/><br/><br/><br/>
-
-
-   <!-- JavaScript to handle the confirmation dialog -->
-   <script>
-       function confirmDelete(productName, productId) {
-           // Show a confirmation dialog
-           if (confirm("Are you sure you want to delete " + productName + "?")) {
-               // If user confirms, submit the form
-               var form = document.createElement("form");
-               form.method = "post";
-               form.action = "@Url.Action("DeleteProduct", "Brian")";
-              
-               // Create a hidden input field to pass the product ID
-               var hiddenInput = document.createElement("input");
-               hiddenInput.type = "hidden";
-               hiddenInput.name = "id";
-               hiddenInput.value = productId;
-              
-               // Append the hidden input field to the form
-               form.appendChild(hiddenInput);
-              
-               // Append the form to the document body and submit it
-               document.body.appendChild(form);
-               form.submit();
-           } else {
-               // If user cancels, do nothing
-               return false;
-           }
-       }
-   </script>
-</body>
-</html>
+                document.body.appendChild(form);
+                form.submit();
+            } else {
+                return false;
+            }
+        }
+    </script>

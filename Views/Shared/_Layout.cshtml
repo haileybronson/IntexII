@@ -43,9 +43,8 @@
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownAdmin">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ReviewOrders">Review Orders</a>
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Brian" asp-action="CrudProducts">CRUD Products</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Brian" asp-action="AddProduct">Edit Products</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Brian" asp-action="UpdateProduct">Update Products</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Brian" asp-action="UpdateProduct">Update Products</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Brian1" asp-action="CrudUsers">CRUD Users</a>
+                                
                             </div>
                         </li>
                     </ul>
@@ -73,19 +72,6 @@
         </div>
     </nav>
 </header>
-
-        <!--
-        <div>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Logout</a>
-                </li>
-            </ul>
-        </div>
-        -->
 }
 else if (User.IsInRole("Cust"))
 {

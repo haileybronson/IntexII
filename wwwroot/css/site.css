@@ -197,3 +197,9 @@ body {
   margin: auto;
   padding: 20px;
 }
+/* Add ellipsis to long text */
+.table td, .table th {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

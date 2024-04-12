@@ -1,53 +1,63 @@
 @model IntexII.Models.Product
 
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Add Product</title>
-</head>
-<body>
-<h2>Add New Product</h2>
-<form method="post" action="@Url.Action("AddProduct", "Brian")">
-    <div>
-        <label for="ProductName">Product Name:</label>
-        <input type="text" id="ProductName" name="ProductName" required>
+<div class="gradient-header">
+    <h1 class="title">Add New Product</h1>
+</div>
+<div class="container m-5">
+    <div class="row">
+        <!-- Left side with form -->
+        <div class="col-md-5 filter-box p-5">
+            <div class="form-container">
+            <form method="post" action="@Url.Action("AddProduct", "Brian")">
+                <div>
+                    <label for="ProductName">Product Name</label>
+                    <input type="text" id="ProductName" name="ProductName" class="form-control input-purple" required>
+                </div>
+                <div>
+                    <label for="Year">Year</label>
+                    <input type="text" id="Year" name="Year" class="form-control input-purple" required>
+                </div>
+                <div>
+                    <label for="num_Parts">Number of Parts</label>
+                    <input type="text" id="num_Parts" name="num_Parts" class="form-control input-purple" required>
+                </div>
+                <div>
+                    <label for="Price">Price</label>
+                    <input type="text" id="Price" name="Price"  class="form-control input-purple" required>
+                </div>
+                <div>
+                    <label for="img_Link">Image Link</label>
+                    <input type="text" id="img_Link" name="img_Link" class="form-control input-purple">
+                </div>
+                <div>
+                    <label for="primary_Color">Primary Color</label>
+                    <input type="text" id="primary_Color" name="primary_Color" class="form-control input-purple">
+                </div>
+                <div>
+                    <label for="secondary_Color">Secondary Color</label>
+                    <input type="text" id="secondary_Color" name="secondary_Color" class="form-control input-purple">
+                </div>
+                <div>
+                    <label for="Description">Description</label>
+                    <textarea id="Description" name="Description" class="form-control input-purple"></textarea>
+                </div>
+                <div>
+                    <label for="Category">Category</label>
+                    <input type="text" id="Category" name="Category" class="form-control input-purple">
+                </div>
+                <br>
+                <div>
+                    <button type="submit" class="btn btn-primary">Add Product</button>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!-- Right side with image -->
+        <div class="col-md-6">
+            <div class="image-container d-flex justify-content-center align-items-center">
+                <img src="~/lib/img/Racecar.jpeg" alt="Racecar">
+            </div>
+        </div>
     </div>
-    <div>
-        <label for="Year">Year:</label>
-        <input type="text" id="Year" name="Year" required>
-    </div>
-    <div>
-        <label for="num_Parts">Number of Parts:</label>
-        <input type="text" id="num_Parts" name="num_Parts" required>
-    </div>
-    <div>
-        <label for="Price">Price:</label>
-        <input type="text" id="Price" name="Price" required>
-    </div>
-    <div>
-        <label for="img_Link">Image Link:</label>
-        <input type="text" id="img_Link" name="img_Link">
-    </div>
-    <div>
-        <label for="primary_Color">Primary Color:</label>
-        <input type="text" id="primary_Color" name="primary_Color">
-    </div>
-    <div>
-        <label for="secondary_Color">Secondary Color:</label>
-        <input type="text" id="secondary_Color" name="secondary_Color">
-    </div>
-    <div>
-        <label for="Description">Description:</label>
-        <textarea id="Description" name="Description"></textarea>
-    </div>
-    <div>
-        <label for="Category">Category:</label>
-        <input type="text" id="Category" name="Category">
-    </div>
-    <div>
-        <button type="submit">Add Product</button>
-    </div>
-</form>
-</body>
-</html>
+</div>

@@ -10,14 +10,9 @@
         </small>
     }
     
-    <a asp-page="/Cart"
+    <a class="btn" asp-page="/Cart"
        asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()">
-        <img src="~/lib/img/Cart.png" style="height: 5px; width: 5px;" alt="Cart Picture">
+        Cart
     </a>
-    
-    @* <a class="nav-link text-dark" asp-page="/Cart" *@
-    @*    asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()"> *@
-    @*     <i class="fa-light fa-cart-shopping"></i> *@
-    @* </a> *@
 
 </div>
