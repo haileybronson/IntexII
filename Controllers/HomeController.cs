@@ -122,7 +122,8 @@ public class HomeController : Controller
             date = DateTime.Now.ToString("MM/dd/yyyy"),
             day_of_week = DateTime.Now.DayOfWeek.ToString(),
             time = DateTime.Now.Hour,
-            type_of_transaction = "Online"
+            type_of_transaction = "Online",
+            entry_mode = "CVC"
         };
         return View(newOrder);
     }
@@ -135,12 +136,40 @@ public class HomeController : Controller
         if (ModelState.IsValid)
         {
             _repo.SaveOrder(order);
-            return RedirectToAction("OrderConfirmation" , new { orderId = order.transaction_Id }); 
+
+            // Fetch the latest prediction for the saved order
+            var (predictions, _) = _repo.GetOrderFraudPredictions(1, 1);
+            var prediction = predictions.FirstOrDefault();
+          
+            _logger.LogInformation($"Prediction for order {order.transaction_Id}: {prediction?.Prediction}");
+
+
+            // Redirect based on fraud prediction
+            if (prediction != null && prediction.Prediction == "Fraud")
+            {
+                // If fraudulent, go to OrderReview
+                return RedirectToAction("OrderReview", new { orderId = order.transaction_Id });
+            }
+            else
+            {
+                // If not fraudulent, go to OrderConfirmation
+                return RedirectToAction("OrderConfirmation", new { orderId = order.transaction_Id });
+            }
         }
         return View(order);
     }
     
     public IActionResult OrderConfirmation(int orderId)
+    {
+        var order = _repo.GetOrderById(orderId);
+        if (order == null)
+        {
+            return NotFound();
+        }
+        return View(order);
+    }
+    
+    public IActionResult OrderReview(int orderId)
     {
         var order = _repo.GetOrderById(orderId);
         if (order == null)

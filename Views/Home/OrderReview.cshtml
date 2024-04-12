@@ -1,5 +1,6 @@
 
-<!--This page will display if the order is not flagged as fraud by the predictive model-->
+<!--This page will display if the order has been flagged as fraud, and we want to kindly tell users that their order is 
+under review-->
 
 @{
     Layout = null;
@@ -15,8 +16,7 @@
 <body>
 <div>
     <h2>Thank you for your order!</h2>
-    <p>Your order number is: @Model.transaction_Id</p>
-    <p>Date of Transaction: @Model.date</p>
+    <p>Transaction details will be sent to you after it has been reviewed and processed.</p>
     <p>Amount: $@Model.amount</p>
 
     <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Return to Home</a>
