@@ -1,25 +1,11 @@
+<div class="container filter-box">
+    <div class="content-wrapper">
+        <div class="box text-center">
+            <h2 class="mb-4">Thank you for your order!</h2>
+            <p class="mb-3">Your order is currently under review. Transaction details will be sent to you after it has been processed.</p>
+            <p class="mb-3">Amount: $@Model.amount</p>
 
-<!--This page will display if the order has been flagged as fraud, and we want to kindly tell users that their order is 
-under review-->
-
-@{
-    Layout = null;
-}
-@model Orders
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-    <h2>Thank you for your order!</h2>
-    <p>Transaction details will be sent to you after it has been reviewed and processed.</p>
-    <p>Amount: $@Model.amount</p>
-
-    <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Return to Home</a>
+            <a href="@Url.Action("Index", "Home")" class="btn btn-lg btn-custom">Return to Home</a>
+        </div>
+    </div>
 </div>
-</body>
-</html>

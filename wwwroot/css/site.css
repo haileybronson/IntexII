@@ -191,3 +191,9 @@ body {
    justify-content: center; /* Centers form group content horizontally */
    align-items: center; /* Aligns form group content vertically */
  }
+
+.cart-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}

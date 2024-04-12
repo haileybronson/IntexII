@@ -1,64 +1,64 @@
-@{
-}
-
 @model Orders
 
+
 <div class="container mt-4">
-    <form method="post" action="@Url.Action("CreateOrder", "Home")" class="row">
-        @Html.AntiForgeryToken()
+   <form method="post" action="@Url.Action("CreateOrder", "Home")" class="row">
+       @Html.AntiForgeryToken()
 
-        <!-- Order Details - Left Half -->
-        <div class="col-md-6">
-            <div class="p-3 filter-box rounded text-center">
-                <h4 class="m-3">Order Details</h4>
-                <div class="form-group mb-2">
-                    <label class="fw-bold text-decoration-underline">Date</label>
-                    <input type="text" class="form-control-plaintext text-center display-6" value="@Model.date" readonly />
-                </div>
-                <div class="form-group mb-2">
-                    <label class="fw-bold text-decoration-underline">Day of Week</label>
-                    <input type="text" class="form-control-plaintext text-center display-6" value="@Model.day_of_week.Substring(0, 3)" readonly />
-                </div>
-                <div class="form-group mb-2">
-                    <label class="fw-bold text-decoration-underline">Time</label>
-                    <input type="text" class="form-control-plaintext text-center display-6" value="@Model.time" readonly />
-                </div>
-                <div class="form-group mb-2">
-                    <label class="fw-bold text-decoration-underline">Type of Transaction</label>
-                    <input type="text" class="form-control-plaintext text-center display-6" value="@Model.type_of_transaction" readonly />
-                </div>
-                <input type="hidden" name="entry_mode" value="@Model.entry_mode" />
-            </div>
-        </div>
-        
 
-        <!-- Order Inputs - Right Half -->
-        <div class="col-md-6">
-            <div class="p-3">
-                <h4 class="pb-3 display-6">Billing Information</h4>
-                <div class="form-group mb-2">
-                    <label>Amount</label>
-                    <input type="number" class="form-control input-purple" name="amount" value="@Model.amount" placeholder="Amount" required step="1" min="0" />
-                </div>
-                <div class="form-group mb-2">
-                    <label>Country of Transaction</label>
-                    <input type="text" class="form-control input-purple" name="country_of_transaction" value="@Model.country_of_transaction" placeholder="Country of Transaction" required pattern="^(United Kingdom|USA|India|China|Russia)$"/>
-                </div>
-                <div class="form-group mb-2">
-                    <label>Shipping Address</label>
-                    <input type="text" class="form-control input-purple" name="shipping_address" value="@Model.shipping_address" placeholder="Shipping Address" required pattern="^(United Kingdom|USA|India|China|Russia)$"/>
-                </div>
-                <div class="form-group mb-2">
-                    <label>Bank</label>
-                    <input type="text" class="form-control input-purple" name="bank" value="@Model.bank" placeholder="Bank" required pattern="^(Halifax|Barclays|RBS|HSBC|Metro|Monzo|Lloyds)$"/>
-                </div>
-                <div class="form-group mb-2">
-                    <label>Card Type</label>
-                    <input type="text" class="form-control input-purple" name="type_of_card" value="@Model.type_of_card" placeholder="Card Type" required pattern="^(MasterCard|Visa)$"/>
-                </div>
-                <br>
-                <button type="submit" class="btn btn-primary btn-lg">Submit Order</button>
-            </div>
-        </div>
-    </form>
+       <!-- Order Details - Left Half -->
+       <div class="col-md-6">
+           <div class="p-3 filter-box rounded text-center">
+               <h4 class="m-3">Order Details</h4>
+               <div class="form-group mb-2">
+                   <label class="fw-bold text-decoration-underline">Date</label>
+                   <input type="text" class="form-control-plaintext text-center display-6" value="@Model.date" readonly />
+               </div>
+               <div class="form-group mb-2">
+                   <label class="fw-bold text-decoration-underline">Day of Week</label>
+                   <input type="text" class="form-control-plaintext text-center display-6" value="@Model.day_of_week.Substring(0, 3)" readonly />
+               </div>
+               <div class="form-group mb-2">
+                   <label class="fw-bold text-decoration-underline">Time</label>
+                   <input type="text" class="form-control-plaintext text-center display-6" value="@Model.time" readonly />
+               </div>
+               <div class="form-group mb-2">
+                   <label class="fw-bold text-decoration-underline">Type of Transaction</label>
+                   <input type="text" class="form-control-plaintext text-center display-6" value="@Model.type_of_transaction" readonly />
+               </div>
+               <input type="hidden" name="entry_mode" value="@Model.entry_mode" />
+           </div>
+       </div>
+      
+
+
+       <!-- Order Inputs - Right Half -->
+       <div class="col-md-6">
+           <div class="p-3">
+               <h4 class="pb-3 display-6">Billing Information</h4>
+               <div class="form-group mb-2">
+                   <label>Amount</label>
+                   <input type="number" class="form-control input-purple" name="amount" value="@Model.amount" placeholder="Amount" required step="1" min="0" />
+               </div>
+               <div class="form-group mb-2">
+                   <label>Country of Transaction</label>
+                   <input type="text" class="form-control input-purple" name="country_of_transaction" value="@Model.country_of_transaction" placeholder="Country of Transaction" required pattern="^(United Kingdom|USA|India|China|Russia)$"/>
+               </div>
+               <div class="form-group mb-2">
+                   <label>Shipping Address</label>
+                   <input type="text" class="form-control input-purple" name="shipping_address" value="@Model.shipping_address" placeholder="Shipping Address" required pattern="^(United Kingdom|USA|India|China|Russia)$"/>
+               </div>
+               <div class="form-group mb-2">
+                   <label>Bank</label>
+                   <input type="text" class="form-control input-purple" name="bank" value="@Model.bank" placeholder="Bank" required pattern="^(Halifax|Barclays|RBS|HSBC|Metro|Monzo|Lloyds)$"/>
+               </div>
+               <div class="form-group mb-2">
+                   <label>Card Type</label>
+                   <input type="text" class="form-control input-purple" name="type_of_card" value="@Model.type_of_card" placeholder="Card Type" required pattern="^(MasterCard|Visa)$"/>
+               </div>
+               <br>
+               <button type="submit" class="btn btn-primary btn-lg">Submit Order</button>
+           </div>
+       </div>
+   </form>
 </div>

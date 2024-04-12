@@ -1,25 +1,13 @@
-
-<!--This page will display if the order is not flagged as fraud by the predictive model-->
-
-@{
-    Layout = null;
-}
 @model Orders
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-    <h2>Thank you for your order!</h2>
-    <p>Your order number is: @Model.transaction_Id</p>
-    <p>Date of Transaction: @Model.date</p>
-    <p>Amount: $@Model.amount</p>
-
-    <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Return to Home</a>
+<div class="container filter-box">
+    <div class="content-wrapper">
+        <div class="box text-center">
+            <h2>Thank you for your order!</h2>
+            <p>Your order number is: @Model.transaction_Id</p>
+            <p>Date of Transaction: @Model.date</p>
+            <p>Amount: $@Model.amount</p>
+        
+            <a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-custom">Return Home</a>
+        </div>
+    </div>
 </div>
-</body>
-</html>
