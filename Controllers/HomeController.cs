@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using IntexII.Models;
 using IntexII.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.ML.OnnxRuntime;
 
 namespace IntexII.Controllers;
@@ -46,6 +47,7 @@ public class HomeController : Controller
     }
     
 
+    [Authorize(Roles = "ADMIN")]
     public IActionResult ReviewOrders(int pageNum = 1, int pageSize = 5)
     {
         var (predictions, totalOrders) = _repo.GetOrderFraudPredictions(pageNum, pageSize);

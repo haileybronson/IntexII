@@ -18,14 +18,14 @@ namespace IntexII.Controllers
        }
 
 
-       [Authorize]
+       [Authorize(Roles = "ADMIN")]
        public IActionResult CrudProducts()
        {
            var products = _repo.GetAll();
            return View(products);
        }
       
-       [Authorize]
+       [Authorize(Roles = "ADMIN")]
        public IActionResult UpdateProduct(int id)
        {
            var product = _repo.GetById(id);
@@ -37,7 +37,7 @@ namespace IntexII.Controllers
        }
       
        [HttpPost]
-       [Authorize]
+       [Authorize(Roles = "ADMIN")]
        public IActionResult UpdateProduct(Product product)
        {
            if (ModelState.IsValid)
@@ -49,7 +49,7 @@ namespace IntexII.Controllers
        }
       
        [HttpPost]
-       [Authorize]
+       [Authorize(Roles = "ADMIN")]
        public IActionResult DeleteProduct(int id)
        {
            var product = _repo.GetById(id);
@@ -69,7 +69,7 @@ namespace IntexII.Controllers
        }
       
        [HttpPost]
-       [Authorize]
+       [Authorize(Roles = "ADMIN")]
        public IActionResult AddProduct(Product product)
        {
            if (ModelState.IsValid)

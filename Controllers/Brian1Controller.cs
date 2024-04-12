@@ -15,14 +15,14 @@ namespace IntexII.Controllers
             _repo = temp;
         }
 
-        [Authorize]
+        [Authorize(Roles = "ADMIN")]
         public IActionResult CrudCustomers()
         {
             var customers = _repo.GetAllCustomers();
             return View(customers);
         }
 
-        [Authorize]
+        [Authorize(Roles = "ADMIN")]
         public IActionResult UpdateCustomer(int id)
         {
             var customer = _repo.GetCustomersById(id);
@@ -34,7 +34,7 @@ namespace IntexII.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "ADMIN")]
         public IActionResult UpdateCustomer(Customers customer)
         {
             if (ModelState.IsValid)
@@ -46,7 +46,7 @@ namespace IntexII.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "ADMIN")]
         public IActionResult DeleteCustomer(int id)
         {
             var customer = _repo.GetCustomersById(id);
@@ -65,7 +65,7 @@ namespace IntexII.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "ADMIN")]
         public IActionResult AddCustomer(Customers customer)
         {
             if (ModelState.IsValid)
