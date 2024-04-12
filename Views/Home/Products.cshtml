@@ -1,4 +1,3 @@
-
 @{
     ViewData["Title"] = "Products Page";
 }
@@ -12,37 +11,43 @@
     </div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid p-5">
+    <div class="row">  <!-- Ensure there is a 'row' div here -->
         <!-- Filter Column -->
         <div class="col-md-3">
             <div class="filter-box">
                 <h3 class="filter-header">Filters</h3>
                 <!-- Product Types Filter -->
                 <vc:product-types></vc:product-types>
+                <br>
                 <!-- Color Type Filter -->
                 <vc:color-type></vc:color-type>
                 <!-- Add Pagination Size Filter here (if applicable) -->
             </div>
         </div>
         
-    <!-- Products Column -->
-    <div class="col-md-9">
-        <!-- Products List -->
-        @foreach (Product b in Model.Products)
-        {
-            <partial name="ProductSummary" model="b"/>
-        }
+        <!-- Products Column -->
+        <div class="col-md-9">
+            <div class="row">  <!-- Optional: Another row for internal structuring of products if necessary -->
+                <!-- Products List -->
+                @foreach (Product b in Model.Products)
+                {
+                    <partial name="ProductSummary" model="b"/>
+                }
+            </div>
 
-        @foreach (var size in Model.AvailablePageSizes)
-        {
-            <a href="@Url.Action("Products", "Home", new { productType = Model.CurrentProductType, colorType = Model.CurrentColorType, pageNum = 1, pageSize = size })" class="btn @(Model.SelectedPageSize == size ? "btn-primary" : "btn-outline-secondary")">@size</a>
-        }
-
-        <!-- Pagination -->
-        <div page-model="@Model.PaginationInfo" page-action="Products" page-classes-enabled="true" page-class="btn"
-             page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
-             page-url-productType="@Model.CurrentProductType" page-url-colorType="@Model.CurrentColorType" page-url-pageSize="@Model.SelectedPageSize"
-             class="btn-group pull-right m-1">
+            <div class="pagination-controls">
+                @foreach (var size in Model.AvailablePageSizes)
+                {
+                    <a href="@Url.Action("Products", "Home", new { productType = Model.CurrentProductType, colorType = Model.CurrentColorType, pageNum = 1, pageSize = size })" class="btn @(Model.SelectedPageSize == size ? "btn-primary" : "btn-outline-secondary")">@size</a>
+                }
+                <!-- Pagination -->
+                <div page-model="@Model.PaginationInfo" page-action="Products" page-classes-enabled="true" page-class="btn"
+                     page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
+                     page-url-productType="@Model.CurrentProductType" page-url-colorType="@Model.CurrentColorType" page-url-pageSize="@Model.SelectedPageSize"
+                     class="btn-group pull-right m-2">
+                </div>
+            </div>
         </div>
     </div>
-    </div>
+</div>

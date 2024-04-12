@@ -5,22 +5,24 @@ ViewData["Title"] = "Products Page";
 
 @model Product
 
+@* Still need to create button that takes product and adds it too cart if the user is logged in. *@
+@* If not, send to login page *@
+@* Worry about this last - Configure routing at that time (not in home controller yet) *@
 
-<html>
-<head>
-    <title>This page will be coded for when a user clicks on a product they are taken to a new page with the products detials</title>
-    <title>Worry about this last - Configure routing at that time (not in home controller yet)</title>
-</head>
-
-<div>
-    <h2>@Model.ProductName</h2>
-    <p>Price: $@Model.Price</p>
-    <p>Category: @Model.Category</p>
-    <p>Color: @Model.primary_Color</p>
-    <p>Color: @Model.Description</p>
-    <!-- Add more details as necessary -->
-    @if (!string.IsNullOrEmpty(Model.img_Link))
-    {
-        <img src="@Model.img_Link" alt="Image of @Model.ProductName" style="max-width:100%; height:auto;">
-    }
-</div>
+<div class="container product-details">
+        <div class="row">
+            <div class="col-md-6 product-image">
+                @if (!string.IsNullOrEmpty(Model.img_Link))
+                {
+                    <img src="@Model.img_Link" alt="Image of @Model.ProductName">
+                }
+            </div>
+            <div class="col-md-6">
+                <h1 class="product-title">@Model.ProductName</h1>
+                <p class="product-price">$@Model.Price</p>
+                <p class="product-info"><strong>Category:</strong>  @Model.Category</p>
+                <p class="product-info"><strong>Color:</strong>  @Model.primary_Color</p>
+                <p class="product-info indent"> @Model.Description</p>
+            </div>
+        </div>
+    </div>

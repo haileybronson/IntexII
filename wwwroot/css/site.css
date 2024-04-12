@@ -141,7 +141,6 @@ body {
   border: 2px solid #3052CF; /* Subtle border styling */
   padding: 20px; /* Padding around the filters */
   border-radius: 5px; /* Rounded corners for the filter box */
-  margin-top: 20px; /* Space from top of the column */
 }
 
 .filter-header {
@@ -150,3 +149,45 @@ body {
   font-size: 1.5rem; 
   color: black;
 }
+/*Product details page*/
+ .product-details {
+   margin: 20px;
+   padding: 5vh 10vh 5vh 10vh;
+   border: 1px solid #dee2e6;
+   border-radius: 5px;
+ }
+
+.product-image img {
+  width: 100%; /* responsive image size */
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.product-title {
+  color: #333;
+  font-size: 30px;
+  font-weight: normal;
+}
+
+.product-price {
+  color: #007bff;
+  font-size: 40px;
+  margin-top: 10px;
+}
+
+.product-info {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+/*input form borders*/
+.input-purple {
+  border: 1px solid #6441d7; /* Purple border */
+}
+
+ .border-rounded .form-group {
+   display: flex;
+   justify-content: center; /* Centers form group content horizontally */
+   align-items: center; /* Aligns form group content vertically */
+ }

@@ -1,28 +1,27 @@
-
-
-@{
-}
-@using IntexII.Infrastructure
 @model Product
 
-<div class="card m-1 p-1">
-    <h4>@Model.ProductName
-        <span class="badge rounded-pill bg-primary text-white float-end"><small>$@Model.Price</small></span>
-    </h4>
-
-    <ul>
-        <li>Category @Model.Category</li>
-        <li>Price: @Model.Price</li>
-
-    </ul>
-    <form action="@Url.Action("ProductDetail", "Home", new { productId = Model.ProductId })" method="get">
-            <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.Path@ViewContext.HttpContext.Request.QueryString"/>
-            <button type="submit" class="btn-outline-success btn-sm float-end">More Details</button>
-    </form>
-    <form id=@Model.ProductId method="post" asp-page="/Cart">
-        <input type="hidden" asp-for="ProductId"/>
-        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
-        <button type="submit" class="btn-outline-success btn-sm float-end">Add to Cart</button>
-    </form>
-    
+<div class="col-md-6"> <!-- Set the column width to half the container's width to fit two products per row -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title d-flex justify-content-between align-items-center">
+                @Model.ProductName
+                <span class="badge bg-primary">$@Model.Price</span>
+            </h5>
+            <ul class="list-group list-group-flush mb-2">
+                <li class="list-group-item px-0">Category | @Model.Category</li>
+                <li class="list-group-item px-0">Price $@Model.Price.00</li>
+            </ul>
+            <div class="d-flex justify-content-end">
+                <form action="@Url.Action("ProductDetail", "Home", new { productId = Model.ProductId })" method="get" class="me-1">
+                    <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.Path@ViewContext.HttpContext.Request.QueryString"/>
+                    <button type="submit" class="btn btn-outline-primary btn-lg">More Details</button>
+                </form>
+                <form method="post" asp-page="/Cart" class="ms-1">
+                    <input type="hidden" asp-for="ProductId"/>
+                    <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
+                    <button type="submit" class="btn btn-outline-success btn-lg">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
