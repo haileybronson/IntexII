@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using IntexII.Data;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace IntexII.Models
 {
@@ -13,34 +16,40 @@ namespace IntexII.Models
         {
             _context = context;
         }
-
-
+      
+        public Customers GetCustomersById(object id)
+        {
+            if (id is int customer_Id)
+            {
+                return _context.Customers.Find(customer_Id);
+            }
+            return null;
+        }
+      
         public IEnumerable<Customers> GetAllCustomers()
         {
             return _context.Customers.ToList();
         }
-
-
-        public Customers GetCustomersById(object id)
+      
+        public IEnumerable<Customers> GetMostRecent50Customers()
         {
-            if (id is int Id)
-            {
-                return _context.Customers.Find(id);
-            }
-            return null;
+            return _context.Customers
+                .OrderByDescending(c => c.customer_Id)
+                .Take(50)
+                .ToList();
         }
 
 
-        public void InsertCustomers(Customers Customers)
+        public void InsertCustomers(Customers customer)
         {
-            _context.Customers.Add(Customers);
+            _context.Customers.Add(customer);
             _context.SaveChanges();
         }
 
 
-        public void UpdateCustomers(Customers Customers)
+        public void UpdateCustomers(Customers customer)
         {
-            _context.Customers.Update(Customers);
+            _context.Customers.Update(customer);
             _context.SaveChanges();
         }
 

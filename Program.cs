@@ -59,6 +59,12 @@ builder.Services.AddDbContext<CrudDBContext>(options =>
     options.UseSqlServer(builder.Configuration["ConnectionStrings:ProductConnection"]);
 });
 
+builder.Services.AddDbContext<CrudUDBContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration["ConnectionStrings:ProductConnection"]);
+});
+
+
 //LineItemsDBContext
 builder.Services.AddDbContext<LineItemsDBContext>(options =>
 {
@@ -84,13 +90,16 @@ builder.Services.AddDbContext<AdminsDBContext>(options =>
 //builder.Services.AddScoped<EFCrudURepository>();
 // Registering EFCrudRepository
 builder.Services.AddScoped<EFCrudRepository>();
+builder.Services.AddScoped<EFCrudURepository>();
 
 // Registering ICrudRepository<Product> with EFCrudRepository
 builder.Services.AddScoped<ICrudRepository<Product>, EFCrudRepository>();
+builder.Services.AddScoped<ICrudURepository<Customers>, EFCrudURepository>();
 //builder.Services.AddScoped<ICrudURepository<AspNetUsers>, EFCrudURepository>();
 
 // Registering DbContexts for dependency injection
 builder.Services.AddScoped<CrudDBContext>();
+builder.Services.AddScoped<CrudUDBContext>();
 //builder.Services.AddScoped<CrudUDBContext>();
 
 builder.Services.AddRazorPages();
@@ -118,7 +127,8 @@ app.Use(async (ctx, next) =>
         "default-src 'self'; " +
         "font-src 'self' fonts.gstatic.com; " +
         "style-src 'self' fonts.googleapis.com; " +
-        "img-src 'self' m.media-amazon.com www.lego.com images.brickset.com www.brickeconomy.com");
+        "img-src 'self' m.media-amazon.com www.lego.com images.brickset.com www.brickeconomy.com; " +
+        "script-src 'self' 'unsafe-inline'");
     await next();
 });
 

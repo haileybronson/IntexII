@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using IntexII.Models;
 
+
 namespace IntexII.Data
 {
     public class CrudUDBContext : DbContext
@@ -11,12 +12,18 @@ namespace IntexII.Data
         }
 
 
+
+
         public DbSet<Customers> Customers { get; set; } // Add this DbSet property
+
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+
 
 
             // Configure your entity relationships, constraints, etc. here

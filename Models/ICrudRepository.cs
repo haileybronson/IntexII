@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 
+
 namespace IntexII.Models
 {
     public interface ICrudRepository<TEntity> where TEntity : class

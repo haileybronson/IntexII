@@ -3,11 +3,15 @@ using System.Linq;
 using IntexII.Data;
 
 
+
+
 namespace IntexII.Models
 {
     public class EFCrudRepository : ICrudRepository<Product>
     {
         private readonly CrudDBContext _context;
+
+
 
 
         public EFCrudRepository(CrudDBContext context)
@@ -16,10 +20,14 @@ namespace IntexII.Models
         }
 
 
+
+
         public IEnumerable<Product> GetAll()
         {
             return _context.Products.ToList();
         }
+
+
 
 
         public Product GetById(object id)
@@ -32,6 +40,8 @@ namespace IntexII.Models
         }
 
 
+
+
         public void Insert(Product product)
         {
             _context.Products.Add(product);
@@ -39,11 +49,15 @@ namespace IntexII.Models
         }
 
 
+
+
         public void Update(Product product)
         {
             _context.Products.Update(product);
             _context.SaveChanges();
         }
+
+
 
 
         public void Delete(object id)

@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
+
 namespace IntexII.Models;
+
 
 public partial class CustomersDBContext : DbContext
 {
@@ -9,8 +11,9 @@ public partial class CustomersDBContext : DbContext
     {
     }
 
+
     public virtual DbSet<Customers> Customers { get; set; }
-    
+  
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured)

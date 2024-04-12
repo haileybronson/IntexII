@@ -1,40 +1,44 @@
-
-
 @{
     Layout = null;
 }
 
+
 @model OrdersListViewModel
+
 
 @{
     ViewData["Title"] = "Fraud_Predictions";
+
 
     var classTypeDict = new Dictionary<int, string>
     {
         { 0, "False" },
         { 1, "True" },
-      };
+    };
 }
 
-<style>
-    .table-responsive {
-        overflow-x: auto;
-    }
-    .full-width-table {
-        margin-left: -50px;
-        margin-right: 0;
 
-    }
-    .table {
-        width: auto;
-        margin-bottom: 0;
-    }
-    .prediction-cell {
-        background-color: #e0f2f1;
-    }
+<style>
+   .table-responsive {
+       overflow-x: auto;
+   }
+   .full-width-table {
+       margin-left: -50px;
+       margin-right: 0;
+
+
+   }
+   .table {
+       width: auto;
+       margin-bottom: 0;
+   }
+   .prediction-cell {
+       background-color: #e0f2f1;
+   }
+
 
 </style>
-    <h2>Fraud Predictions</h2>
+<h2>Fraud Predictions</h2>
 <table class="table">
     <thead>
     <tr>
@@ -55,6 +59,7 @@
     </tr>
     </thead>
     <tbody>
+
 
     @foreach (var item in Model.Predictions)
     {
@@ -77,25 +82,8 @@
                 <td class="prediction-cell">@item.Prediction</td>
             </tr>
         }
-        }
-    } 
+    }
+
 
     </tbody>
-    </table>
-    
-<div page-model="@Model.PaginationInfo" page-action="Products" page-classes-enabled="true" page-class="btn"
-     page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
-     class="btn-group pull-right m-1">
-</div>
-
-<nav aria-label="Page navigation example">
-    <ul class="pagination">
-        @for (int i = 1; i <= Model.PaginationInfo.TotalNumPages; i++)
-        {
-            <li class="page-item @(i == Model.PaginationInfo.CurrentPage ? "active" : "")">
-                <a class="page-link" href="@Url.Action("ReviewOrders", new { pageNum = i, pageSize = Model.PaginationInfo.ItemsPerPage })">@i</a>
-            </li>
-        }
-    </ul>
- 
-</nav>
+</table>

@@ -1,5 +1,6 @@
 @model IntexII.Models.Customers
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,12 +8,8 @@
 </head>
 <body>
 <h2>Update User</h2>
-<form asp-action="UpdateCustomers" method="post">
-    <input type="hidden" asp-for="customer_ID" />
-    <div>
-        <label asp-for="customer_ID"></label>
-        <input asp-for="customer_ID" />
-    </div>
+<form asp-action="UpdateCustomer" method="post">
+    <input type="hidden" asp-for="customer_Id" />
     <div>
         <label asp-for="first_Name"></label>
         <input asp-for="first_Name" />
@@ -43,4 +40,3 @@
 </form>
 </body>
 </html>
-
