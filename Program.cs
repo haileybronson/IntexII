@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using IntexII.Data;
 using IntexII.Models;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.ML.OnnxRuntime;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,8 +23,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()  // Add this line to include role support
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
 
 
 //DB Contexts and Repo Pattern 
@@ -106,7 +109,8 @@ app.Use(async (ctx, next) =>
     ctx.Response.Headers.Add("Content-Security-Policy",
         "default-src 'self'; " +
         "font-src 'self' fonts.gstatic.com; " +
-        "style-src 'self' fonts.googleapis.com");
+        "style-src 'self' fonts.googleapis.com; " +
+        "img-src 'self' m.media-amazon.com www.lego.com images.brickset.com www.brickeconomy.com");
     await next();
 });
 
@@ -148,6 +152,83 @@ app.MapControllerRoute("productDetail", "Home/ProductDetail/{productId}", new { 
 
 app.MapDefaultControllerRoute();
 
+/*
+using (var scope = app.Services.CreateScope())
+{
+    var serviceProvider = scope.ServiceProvider;
+    var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+    var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    await SeedRolesAsync(userManager, roleManager);
+    await SeedAdminUserAsync(userManager, roleManager);
+}
+async Task SeedAdminUserAsync(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+{
+    string adminEmail = "admin@email.com"; // Use a secure way to store and retrieve this
+    string adminPassword = "GroupPiIntex314"; // Use a secure way to store and retrieve this
+    var adminUser = await userManager.FindByEmailAsync(adminEmail);
+    if (adminUser == null)
+    {
+        adminUser = new IdentityUser()
+        {
+            UserName = adminEmail,
+            Email = adminEmail,
+            EmailConfirmed = true // Confirm email to bypass email verification
+        };
+        var createUserResult = await userManager.CreateAsync(adminUser, adminPassword);
+        if (createUserResult.Succeeded)
+        {
+            // Check if the admin role exists
+            if (!await roleManager.RoleExistsAsync("Admin"))
+            {
+                var adminRole = new IdentityRole("Admin");
+                await roleManager.CreateAsync(adminRole);
+            }
+            // Add the admin user to the admin role
+            var addToRoleResult = await userManager.AddToRoleAsync(adminUser, "Admin");
+            if (!addToRoleResult.Succeeded)
+            {
+                // Handle the case where the admin user could not be added to the admin role
+                throw new InvalidOperationException("Failed to add user to Admin role.");
+            }
+        }
+        else
+        {
+            // Handle the case where the admin user could not be created
+            throw new InvalidOperationException("Failed to create the Admin user.");
+        }
+        if (createUserResult.Succeeded)
+        {
+            // ...
+        }
+        else
+        {
+            var errors = createUserResult.Errors.Select(e => e.Description);
+            // Log these errors
+            // For example:
+            foreach (var error in errors)
+            {
+                // Use your logger here
+                Console.WriteLine(error); // Or use a proper logging mechanism
+            }
+            throw new InvalidOperationException($"Failed to create the Admin user: {string.Join(", ", errors)}");
+        }
+    }
+}
+
+async Task SeedRolesAsync(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+{
+    if (!await roleManager.RoleExistsAsync("Admin"))
+    {
+        var adminRole = new IdentityRole("Admin");
+        await roleManager.CreateAsync(adminRole);
+    }
+    if (!await roleManager.RoleExistsAsync("User"))
+    {
+        var userRole = new IdentityRole("User");
+        await roleManager.CreateAsync(userRole);
+    }
+}
+*/
 app.MapRazorPages();
 app.Run();
 
