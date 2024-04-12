@@ -99,31 +99,31 @@ public class HomeController : Controller
 
     public IActionResult ProductDetail(int productId)
     {
-        // Find the product by its ID using the repo
         var product = _repo.GetProductById(productId);
-
-        // Check if the product exists
         if (product == null)
         {
-            // Handle the case where the product is not found
             return NotFound("Product out of stock, wait til later!");
         }
-        // Fetch recommendations based on the productId
-        var recommendationIds = _repo.GetRecommendationIdsByProductId(productId);
-        var recommendations = recommendationIds
-            .Select(id => _repo.GetProductById(productId))
-            .Where(p => p != null) // Ensure no null entries if a product wasn't found
-            .ToList();
 
-        // Construct the view model with the product and its recommendations
+
+        // Fetch recommendations based on the productId
+        // Assuming this method actually fetches URLs, not IDs
+        var recommendationUrls = _repo.GetRecommendationIdsByProductId(productId);
+
+
+        var recommendationUrlsList = recommendationUrls.ToList();
+
+
         var viewModel = new ProductRecsViewModel
         {
             Product = product,
-            Recommendations = recommendations
+            RecommendationUrls = recommendationUrlsList
         };
-        // If the product is found, pass it to the view
+
+
         return View(viewModel);
     }
+
     
     // GET action for the order form
     [Authorize]
