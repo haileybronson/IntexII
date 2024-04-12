@@ -167,12 +167,12 @@ body {
 .product-title {
   color: #333;
   font-size: 30px;
-  font-weight: normal;
+  font-weight: lighter;
 }
 
 .product-price {
   color: #007bff;
-  font-size: 40px;
+  font-size: 30px;
   margin-top: 10px;
 }
 
