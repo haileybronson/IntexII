@@ -203,3 +203,9 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -16,44 +16,28 @@
         { 1, "True" },
     };
 }
+<div class="gradient-header">
+    <div>
+        <h1 class="title">Fraud Predictions</h1>
+        <h2 class="subtitle">Check to see which orders are predicted to be frauds</h2>
+    </div>
 
+</div>
 
-<style>
-   .table-responsive {
-       overflow-x: auto;
-   }
-   .full-width-table {
-       margin-left: -50px;
-       margin-right: 0;
-
-
-   }
-   .table {
-       width: auto;
-       margin-bottom: 0;
-   }
-   .prediction-cell {
-       background-color: #e0f2f1;
-   }
-
-
-</style>
-<h2>Fraud Predictions</h2>
 <table class="table">
     <thead>
     <tr>
         <th>Transaction ID</th>
         <th>Customer ID</th>
         <th>Date</th>
-        <th>Day of Week</th>
+        <th>Day</th>
         <th>Time</th>
         <th>Entry Mode</th>
         <th>Amount</th>
-        <th>Type of Transaction</th>
-        <th>Country of Transaction</th>
+        <th>Transaction</th>
         <th>Shipping Address</th>
         <th>Bank</th>
-        <th>Type of Card</th>
+        <th>Card Type</th>
         <th>Fraud</th>
         <th class="prediction-cell">Prediction</th>
     </tr>
@@ -74,7 +58,6 @@
                 <td>@item.Orders.entry_mode</td>
                 <td>@item.Orders.amount</td>
                 <td>@item.Orders.type_of_transaction</td>
-                <td>@item.Orders.country_of_transaction</td>
                 <td>@item.Orders.shipping_address</td>
                 <td>@item.Orders.bank</td>
                 <td>@item.Orders.type_of_card</td>

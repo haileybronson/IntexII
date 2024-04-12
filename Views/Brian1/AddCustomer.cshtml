@@ -3,45 +3,41 @@
 <div class="gradient-header">
     <h1 class="title">Add New Customer</h1>
 </div>
-<div class="container m-5">
+<div class="container m-5 center-container">
     <div class="row">
         <!-- Left side with form -->
         <div class="col-md-6 filter-box p-5">
             <div class="form-container">
-            <form method="post" action="@Url.Action("AddCustomer", "Brian1")">
-            <div class="form-group">
-                <label for="customer_ID">Customer ID</label>
-                <input type="text" id="customer_ID" name="customer_ID" class="form-control input-purple" required>
-            </div>
-            <div class="form-group">
-                <label for="first_Name">First Name</label>
-                <input type="text" id="first_Name" name="first_Name" class="form-control input-purple" required>
-            </div>
-            <div class="form-group">
-                <label for="last_Name">Last Name</label>
-                <input type="text" id="last_Name" name="last_Name" class="form-control input-purple" required>
-            </div>
-            <div class="form-group">
-                <label for="birth_date">Birth Date</label>
-                <input type="date" id="birth_date" name="birth_date" class="form-control input-purple" required>
-            </div>
-            <div class="form-group">
-                <label for="country_of_Residence">Country of Residence</label>
-                <input type="text" id="country_of_Residence" name="country_of_Residence" class="form-control input-purple" required>
-            </div>
-            <div class="form-group">
-                <label for="gender">Gender</label>
-                <input type="text" id="gender" name="gender" class="form-control input-purple" required>
-            </div>
-            <div class="form-group">
-                <label for="age">Age</label>
-                <input type="number" id="age" name="age" class="form-control input-purple" required>
-            </div>
-            <br>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Add Customer</button>
-            </div>
-        </form>
+                <form method="post" action="@Url.Action("AddCustomer", "Brian1")">
+                    <div class="form-group">
+                        <label for="first_Name">First Name</label>
+                        <input type="text" id="first_Name" name="first_Name" class="form-control input-purple" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last_Name">Last Name</label>
+                        <input type="text" id="last_Name" name="last_Name" class="form-control input-purple" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="birth_date">Birth Date</label>
+                        <input type="date" id="birth_date" name="birth_date" class="form-control input-purple" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="country_of_Residence">Country of Residence</label>
+                        <input type="text" id="country_of_Residence" name="country_of_Residence" class="form-control input-purple" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <input type="text" id="gender" name="gender" class="form-control input-purple" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" class="form-control input-purple" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Add Customer</button>
+                    </div>
+                </form>
             </div>
         </div>
         <!-- Right side with image -->
