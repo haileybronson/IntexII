@@ -66,7 +66,7 @@ namespace IntexII.Controllers
             return RedirectToAction(nameof(CrudUsers));
         }
 
-
+        [Authorize(Roles = "Admin")]
         public IActionResult AddCustomer()
         {
             return View();

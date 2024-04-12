@@ -63,6 +63,7 @@ namespace IntexII.Controllers
            return RedirectToAction(nameof(CrudProducts));
        }
       
+       [Authorize(Roles = "Admin")]
        public IActionResult AddProduct()
        {
            return View();
